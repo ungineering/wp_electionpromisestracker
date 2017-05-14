@@ -8759,3 +8759,64 @@ function et_get_footer_credits() {
 	return et_get_safe_localization( sprintf( $credits_format, $footer_credits, 'div' ) );
 }
 endif;
+
+
+//*******************************************
+//adding custom post type functionalities
+//*******************************************
+
+function create_custom_post_type(){
+
+		add_rewrite_tag('%govt_type%','(.+)');
+
+        $labels=array(
+                'name'=>'promise',
+                'singular_name'=>'promise',
+                'add_new'=>'Add promise'
+                );
+        $args=array(
+                'labels'=>$labels,
+                'public'=>true,
+                'has_archive'=>false,
+                'publicly_queryable'=>true,
+                'query_var'=>true,
+                'rewrite'=>array('slug'=>'/manifesto-tracker/%govt_type%/promise'),
+                'capability_type'=>'post',
+                'hierarchical'=>true,
+                'supports'=>array('title',
+                        'editor','excerpt','revisions','custom-fields','comments'
+                        ),
+                'taxonomies'=>array('category','post_tag'),
+                'menu_position'=>5
+                );
+        register_post_type('promise',$args);
+}
+add_action('init','create_custom_post_type');
+
+
+function wpse_5308_post_type_link( $link, $post ) {
+    if ( $post->post_type === 'promise' ) {
+        if ( $terms = get_the_terms( $post->ID, 'category' ) )
+            $link = str_replace( '%govt_type%', current( $terms )->slug, $link );
+    }
+
+    return $link;
+}
+
+add_filter( 'post_type_link', 'wpse_5308_post_type_link', 10, 2 );
+
+function my_flush_rewrite_rules() {
+
+    flush_rewrite_rules();
+
+}
+
+add_action( 'after_switch_theme', 'my_flush_rewrite_rules' );
+
+
+
+function government_script_enqueue() {
+	wp_enqueue_style('government', get_template_directory_uri() . '/css/government.css', array(), '1.0.0', 'all');
+	wp_enqueue_script('government', get_template_directory_uri() . '/js/government.js', array(), '1.0.0', true);
+}
+add_action( 'wp_enqueue_scripts', 'government_script_enqueue');
