@@ -3429,11 +3429,6 @@ class wpdb {
             return $this->__wp_query($query);
         }
 
-        if (strpos(strtolower($query), 'select') === 0 || strpos(strtolower($query), 'show') === 0) {
-            // VP does not need to track SELECT and SHOW queries
-            return $this->__wp_query($query);
-        }
-
         $r = null;
 
         /** @var \VersionPress\Database\SqlQueryParser $sqlQueryParser */
@@ -3447,7 +3442,7 @@ class wpdb {
         }
 
         if ($parsedQueryData != null && $parsedQueryData->queryType == \VersionPress\Database\ParsedQueryData::INSERT_UPDATE_QUERY) {
-            $parsedQueryData->ids = [$this->insert_id];
+            $parsedQueryData->ids = $this->insert_id;
         }
 
         if ($parsedQueryData == null) {
