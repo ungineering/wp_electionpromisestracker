@@ -2618,7 +2618,13 @@ function et_pb_postinfo_meta( $postinfo, $date_format, $comment_zero, $comment_o
 	$postinfo_meta = '';
 
 	if ( in_array( 'author', $postinfo ) )
-		$postinfo_meta .= ' ' . esc_html__( 'by', 'et_builder' ) . ' <span class="author vcard">' . et_pb_get_the_author_posts_link() . '</span>';
+		#Changed the content for adding multiple authors -- Anup 
+        #$postinfo_meta .= ' ' . esc_html__( 'by', 'et_builder' ) . ' <span class="author vcard">' . et_pb_get_the_author_posts_link() . '</span>';
+        if (function_exists( 'coauthors_posts_links' ) ) {
+           $postinfo_meta .= coauthors_posts_links( null, null, null, null, false );
+        } else {
+            $postinfo_meta .= ' ' . esc_html__( 'by', 'et_builder' ) . ' <span class="author vcard">' . et_pb_get_the_author_posts_link() . '</span>';
+        } 
 
 	if ( in_array( 'date', $postinfo ) ) {
 		if ( in_array( 'author', $postinfo ) ) $postinfo_meta .= ' | ';
