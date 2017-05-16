@@ -8820,3 +8820,32 @@ function government_script_enqueue() {
 	wp_enqueue_script('government', get_template_directory_uri() . '/js/government.js', array(), '1.0.0', true);
 }
 add_action( 'wp_enqueue_scripts', 'government_script_enqueue');
+
+
+add_filter( 'wpseo_title', 'promise_wpseo_title', 10, 1 );
+function promise_wpseo_title( $title ) {
+    if( ! function_exists('promise_seo_title') ) {
+        return $title;
+    }
+    // get single entry id
+    $str = promise_seo_title();
+    if( empty( $str ) ) {
+    	return $title;
+    }
+    $title= $str;
+    return $title;
+}
+
+add_filter( 'wpseo_metadesc', 'promise_wpseo_description', 10, 1 );
+function promise_wpseo_description( $desc ) {
+    if( ! function_exists('promise_seo_description') ) {
+        return $desc;
+    }
+    // get single entry id
+    $str = promise_seo_description();
+    if( empty( $str ) ) {
+    	return $desc;
+    }
+    $desc= $str;
+    return $desc;
+}
