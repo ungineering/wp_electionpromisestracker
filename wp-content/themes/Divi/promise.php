@@ -53,7 +53,6 @@
                         $status_class   = "fa fa-hourglass-start fa-fw"; 
                         $status_content = '"\f251"';
                         $status_color   = "#5bc0de";
-                        break;
                 }
             ?>
         
@@ -68,25 +67,63 @@
 <div class="container">
     <div id="content-area" class="clearfix">
             <div id="left-area">
-                <?php
-                    $content_post = get_post($post->ID);
-                    $content = $content_post->post_content;
-                    $content = apply_filters('the_content', $content);
-                    $content = str_replace(']]>', ']]&gt;', $content);
-                    echo $content;
-                ?>
+                <div id="share-buttons" class="text-center">
+                    <?php
+                        $url= get_permalink($post->ID);
+                    ?>
+                    <ul class="list-inline">
+                        <li>
+
+                            <a href="<?php echo 'https://www.facebook.com/sharer.php?u='.$url; ?>" target="_blank" style="color:#3b5998 ;">
+                                <i class="fa fa-2x fa-facebook-square"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?php echo 'https://plus.google.com/share?url='.$url; ?>" target="_blank" style="color:#dd4b39 ;">
+                                <i class="fa fa-2x fa-google-plus"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?php echo 'https://twitter.com/share?url='.$url; ?>" target="_blank" style="color:#1da1f2 ;">
+                                <i class="fa fa-2x fa-twitter"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div id="promise_content">
+                    <?php
+                        $content_post = get_post($post->ID);
+                        $content = $content_post->post_content;
+                        $content = apply_filters('the_content', $content);
+                        $content = str_replace(']]>', ']]&gt;', $content);
+                        echo $content;
+                    ?>
+                </div>
+                <div>
+                        <?php
+                                if ( ( comments_open() || get_comments_number() ) && 'on' == et_get_option( 'divi_show_postcomments', 'on' ) ) {
+                                        comments_template( '', true );
+                                }
+                        ?>
+                </div>
             </div>
     </div>
 </div>
 
  <style>
-    p {
+    #promise_content p {
         background-color: #f7f7f7;
         font-family: Lato, sans-serif;
         font-size: 1.05em;
         line-height: 1.5;
         margin-bottom: 1em;
         padding: .25em .5em;
+    }
+
+    #promise_content {
+        border-left: .3em solid;
+        border-left-color: <?php echo $status_color; ?>;
     }
 
     #promise_status_symbol {
@@ -134,11 +171,9 @@
     }
     #left-area{
         float: left;
-        border-left: .3em solid;
         margin: 2rem 0 4rem;
         padding-left: .75em;
         padding-right: 5.5%;
-        border-left-color: <?php echo $status_color; ?>;
     }
 </style>
 
