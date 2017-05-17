@@ -34,9 +34,13 @@
                "color" => "success",
                "icon" => "check-circle-o"
             ),         
-            "Under Progress" => array (
+            "Adequate Progress" => array (
                "color" => "warning",
                "icon" => "cogs"
+            ),
+            "Inadequate Progress"=>array(
+                "color"=>"compromised",
+                "icon"=>"cog"
             ),
             "Yet to Start"=>array(
                 "color" => "info",
@@ -56,7 +60,7 @@
 
 
 <?php 
-$total=0; $loop = new WP_Query( array( 'post_type' => 'promise', 'category_name' => $page_title, 'ignore_sticky_posts' => 1, 'paged' => $paged ) );
+$total=0; $loop = new WP_Query( array( 'post_type' => 'promise', 'category_name' => $page_title, 'ignore_sticky_posts' => 1, 'posts_per_page'=>-1,'paged' => $paged ) );
 if ( $loop->have_posts() ) : while ( $loop->have_posts() ) : $loop->the_post(); ?>
 
                             <?php $status_count[get_post_meta( get_the_ID(), 'status' ,true)]++;
@@ -81,7 +85,7 @@ if ( $loop->have_posts() ) : while ( $loop->have_posts() ) : $loop->the_post(); 
                     <?php foreach (array_keys($statuses) as $key): ?>
                      <?php $status_name=$key; $status_data=$statuses[$key];?>
               
-                    <li class="list-group-item list-group-item-<?php echo $status_data['color']?>" data-list-facet="js-promise-status" data-facet-value="<?php echo $status_name?>" data-select-single="true">
+                    <li class="list-group-item list-group-item-<?php echo $status_data['color']?>"  data-list-facet="js-promise-status" data-facet-value="<?php echo $status_name?>" data-select-single="true" >
                         <i class="fa fa-fw fa-<?php echo $status_data['icon']?> "></i>
                         <?php echo $status_name?>: <span class="active-points">
                             <?php if($status_count[$status_name])echo $status_count[$status_name];
@@ -185,13 +189,11 @@ if ( $loop->have_posts() ) : while ( $loop->have_posts() ) : $loop->the_post(); 
 
                         <tbody class="list">
                         <!-- add color to each policy -->
-                    <?php $index=0; $loop = new WP_Query( array( 'post_type' => 'promise', 'category_name' => $page_title, 'ignore_sticky_posts' => 1, 'paged' => $paged ) );
+                    <?php $index=0; $loop = new WP_Query( array( 'post_type' => 'promise', 'category_name' => $page_title, 'ignore_sticky_posts' => 1,'posts_per_page'=>-1, 'paged' => $paged ) );
                             if ( $loop->have_posts() ) : while ( $loop->have_posts() ) : $loop->the_post(); ?>
 
                             <?php $status=get_post_meta( get_the_ID(), 'status' ,true); 
                                   $title=get_post_meta( get_the_ID(), 'title' ,true);
-                                  $state=get_post_meta( get_the_ID(), 'state' ,true);
-                                  $statement=get_post_meta( get_the_ID(), 'statement' ,true);
                                   $category=get_post_meta( get_the_ID(), 'category' ,true);
                                   $var;
                                   $comment_count = $wp_query->post->comment_count;
@@ -224,8 +226,8 @@ if ( $loop->have_posts() ) : while ( $loop->have_posts() ) : $loop->the_post(); 
                             <span class="promise__status-text js-promise-status sr-only"><?php echo $status;?></span>
                             <b> 
                             <a href="<?php the_permalink(); ?>">
-                            <?php echo $title?> </a>
-                            </b>: 
+                            <?php the_title()?> </a>
+                            </b>
 
 <!--                                  <?php echo $statement;?>
                                  <br /> 
