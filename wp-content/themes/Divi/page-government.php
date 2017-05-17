@@ -39,7 +39,7 @@
                "icon" => "cogs"
             ),
             "Inadequate Progress"=>array(
-                "color"=>"compromised",
+                "color"=>"warning",
                 "icon"=>"cog"
             ),
             "Yet to Start"=>array(
@@ -197,7 +197,8 @@ if ( $loop->have_posts() ) : while ( $loop->have_posts() ) : $loop->the_post(); 
                                   $category=get_post_meta( get_the_ID(), 'category' ,true);
                                   $var;
                                   $comment_count = $wp_query->post->comment_count;
-                                  if($status=='Under Progress')$var="warning";
+                                  if($status=='Inadequate Progress')$var="warning";
+                                  if($status=='Adequate Progress')$var="warning";
                                   if($status=='Fulfilled')$var="success";
                                   if($status=='Broken')$var="danger";
                                   if($status=='Stalled')$var="compromised";

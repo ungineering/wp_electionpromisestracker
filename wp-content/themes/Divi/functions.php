@@ -8819,7 +8819,7 @@ function government_script_enqueue() {
 	wp_enqueue_style('government', get_template_directory_uri() . '/css/government.css', array(), '1.0.0', 'all');
 	wp_enqueue_script('government', get_template_directory_uri() . '/js/government.js', array(), '1.0.0', true);
 }
-if(is_page_template('page-government.php')){add_action( 'wp_enqueue_scripts', 'government_script_enqueue');}
+add_action( 'wp_enqueue_scripts', 'government_script_enqueue');
 
 
 add_filter( 'wpseo_title', 'promise_wpseo_title', 10, 1 );
