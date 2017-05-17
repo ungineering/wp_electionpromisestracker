@@ -34,12 +34,12 @@ return $content;
     <div class="container" class="article_title">
         <div id="promise_category">
             <?php
-                echo the_title();
+                echo get_post_meta($post->ID, "category", true);
             ?>
         </div>
         <h1 id="promise-description">
             <?php
-                echo get_post_meta($post->ID, "title", true);
+                echo the_title();
             ?>
         </h1>
     </div>

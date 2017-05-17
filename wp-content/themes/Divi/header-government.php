@@ -68,10 +68,10 @@
         </script>    
     </head>
 
+            
 <body <?php body_class( ); ?>>
 
-
-        <header id="main-header" data-height-onload="<?php echo esc_attr( et_get_option( 'menu_height', '66' ) ); ?>">
+<header id="main-header" data-height-onload="<?php echo esc_attr( et_get_option( 'menu_height', '66' ) ); ?>">
             <div class="container clearfix et_menu_container">
             <?php
                 $logo = ( $user_logo = et_get_option( 'divi_logo' ) ) && '' != $user_logo
@@ -148,4 +148,5 @@
                 </div>
             </div>
         </header> <!-- #main-header -->
-   
+
+        <div class="manifesto-space" style=" margin-bottom: 250px;"> </div> 
