@@ -1,5 +1,6 @@
 <?php
     // WP Post Template: Promise
+
 ?>
 <?php
 function seo_title($title){
@@ -58,32 +59,32 @@ return $content;
                     case 'Fulfilled':
                         $status_class   = "fa fa-check-circle-o fa-fw"; 
                         $status_content = '"\f05d"';
-                        $status_color   = "#5cb85c";
+                        $status_color   = "rgba(67, 207, 8, 0.62)";
                         break;
                     case 'Adequate Progress':
                         $status_class   = "fa fa-cogs fa-fw"; 
                         $status_content = '"\f085"';
-                        $status_color   = "#ec971f";    
+                        $status_color   = "rgb(153, 204, 237)";    
                         break;
                     case 'Inadequate Progress':
                         $status_class   = "fa fa-cog fa-fw"; 
                         $status_content = '"\f085"';
-                        $status_color   = "#ec971f";    
+                        $status_color   = "rgba(141, 153, 161, 0.63)";    
                         break;                        
                     case 'Stalled':
                         $status_class   = "fa fa-handshake-o fa-fw"; 
                         $status_content = '"\f2b5"';
-                        $status_color   = "#a6b5bf";
+                        $status_color   = "rgba(246, 187, 55, 0.73)";
                         break;
                     case 'Broken':
                         $status_class   = "fa fa-ban fa-fw"; 
                         $status_content = '"\f05e"';
-                        $status_color   = "#d9534f";
+                        $status_color   = "rgba(219, 96, 93, 0.82)";
                         break;
                     default :
                         $status_class   = "fa fa-hourglass-start fa-fw"; 
                         $status_content = '"\f251"';
-                        $status_color   = "#5bc0de";
+                        $status_color   = "rgba(182, 46, 194, 0.45)";
                 }
             ?>
         
@@ -146,7 +147,7 @@ return $content;
     #promise_content p {
         background-color: #f7f7f7;
         font-family: Lato, sans-serif;
-        font-size: 1.05em;
+        font-size: 1.25em;
         line-height: 1.5;
         margin-bottom: 1em;
         padding: .25em .5em;
@@ -180,11 +181,11 @@ return $content;
     }
 
     #promise_category{
-        font-size: 2.5rem;
+        font-size: 1.4em;
     }
 
     #promise-description {
-        font-size: 2.5rem;
+        font-size: 1.8em;
         margin: 1rem auto 1rem;
         text-shadow: 0.05em 0.05em rgba(0, 0, 0, 0.13);
     }

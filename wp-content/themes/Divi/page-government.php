@@ -128,14 +128,13 @@ if ( $loop->have_posts() ) : while ( $loop->have_posts() ) : $loop->the_post(); 
             <div id="share-buttons" class="text-center">
                 <ul class="list-inline">
                     <li>
-                        <a href="https://www.facebook.com/sharer.php?u=<?php the_permalink()?>" target="_blank"
-                           style="color:#3b5998;">
+                        <a href="https://www.facebook.com/sharer.php?u=<?php the_permalink()?>" target="_blank" style="color:#3b5998;" onclick="window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=250'); return false">
                             <i class="fa fa-2x fa-facebook-square"></i>
                         </a>
                     </li>
                     <li>
                         <a href="https://twitter.com/share?url=<?php the_permalink()?>;text=Track&nbsp;&commat;<?php echo $party_name?>&apos;s&nbsp;Electoral&nbsp;Promises&nbsp;with&nbsp;Election&nbsp;Promises&nbsp;Tracker."
-                           target="_blank" style="color:#1da1f2;">
+                           target="_blank" style="color:#1da1f2;" onclick="window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=250'); return false ">
                             <i class="fa fa-2x fa-twitter"></i>
                         </a>
                     </li>                    
@@ -167,7 +166,7 @@ if ( $loop->have_posts() ) : while ( $loop->have_posts() ) : $loop->the_post(); 
                      
                         <button class="btn btn-<?php echo $status_data['id'] ?> " data-list-facet="js-promise-status" data-facet-value="<?php echo $status_name ?>" data-select-single="true" style="background-color: <?php echo $status_data['color_bright'] ?>;  border-color: #333;">
                           <i class="fa fa-<?php echo $status_data['icon'] ?> fa-fw" aria-hidden="true"></i>
-                            <span id="remove-on-mobile"> <?php echo $status_name ?></span>
+                            <span> <?php echo $status_name ?></span>
                         </button>
                         
                     <?php endforeach;?>
@@ -186,7 +185,7 @@ if ( $loop->have_posts() ) : while ( $loop->have_posts() ) : $loop->the_post(); 
                     <li role="presentation" data-list-facet="js-promise-category" data-facet-value="<?php echo $cat ?>" class="<?php echo $cat ?>" data-select-single="true" >
                         <a href="#" role="tab" data-toggle="tab" class="text-muted">
                             <i class="fa fa-fw fa-<?php echo $icons[$cat]?>"></i>&nbsp;
-                            <span id="remove-on-mobile"><?php echo $cat; ?></span>
+                            <span ><?php echo $cat; ?></span>
                         </a>
                     </li>
                 <?php endforeach;?>
@@ -194,17 +193,17 @@ if ( $loop->have_posts() ) : while ( $loop->have_posts() ) : $loop->the_post(); 
         </div>
 
         <div class="row promises__table container-fluid">
-                    <table class="table table-striped">
+                    <table class="table table-striped table-sm">
 
                         <thead>
                         <tr>
                             <th><!-- ID --></th>
                             <th class="hidden-sm hidden-md hidden-xs">Status</th>
-                            <th class="hidden-sm hidden-md hidden-xs">Category</th>
+                            <th >Category</th>
                             <!-- <th>Tags</th> -->
                             <th>Promise</th>
                             <!-- <th>Sources</th> -->
-                            <th class="hidden-sm hidden-md hidden-xs">Actions</th>
+                            <th class=" hidden-sm hidden-md hidden-xs">Actions</th>
                         </tr>
                         </thead>
 
@@ -227,8 +226,8 @@ if ( $loop->have_posts() ) : while ( $loop->have_posts() ) : $loop->the_post(); 
                                 <i class="fa fa-fw fa-<?php echo $statuses[$status]['icon']?> text-<?php echo $statuses[$status]['id']?>" title="<?php echo $status; ?>"></i>
                                 <span class="promise__status-text js-promise-status sr-only"><?php echo $status?></span>
                             </td>
-                            <td class="promise__category hidden-sm hidden-md hidden-xs" style="white-space: nowrap;">
-                                <i class="fa fa-fw fa-<?php echo $icons[$category]?>"></i> <span class="js-promise-category"><?php echo $category;?></span>
+                            <td class="promise__category" style="white-space: nowrap;">
+                                <i class="fa fa-fw fa-<?php echo $icons[$category]?>"></i> <span class="js-promise-category" id="remove-on-mobile"><?php echo $category;?></span>
                             </td>
                             <!-- <td class="promise__tags" style="text-align: center;">
                                 {% for tag in promise.tags %}
