@@ -24,7 +24,7 @@
     "Indigenous"=> "users",
     "Security"=>"fighter-jet",
     "Health"=> "heart",
-    "Business & Industries"=>"globe",
+    "Business and Industries"=>"globe",
     "Agriculture"=>"tree",
     "Education"=>"graduation-cap",
     "School Education"=>"graduation-cap",
@@ -76,7 +76,7 @@
             )
     ); 
       if($flag){
-   $cats= array("Education","Health","Economy","Business & Industries","Governance","Agriculture");}
+   $cats= array("Education","Health","Economy","Business and Industries","Governance","Agriculture");}
    else{
     $cats=array("Education", "School Education", "Health", "Pre-Primary Education", "College Education");
    }
@@ -131,12 +131,6 @@ if ( $loop->have_posts() ) : while ( $loop->have_posts() ) : $loop->the_post(); 
                         <a href="https://www.facebook.com/sharer.php?u=<?php the_permalink()?>" target="_blank"
                            style="color:#3b5998;">
                             <i class="fa fa-2x fa-facebook-square"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://plus.google.com/share?url=<?php the_permalink()?>" target="_blank"
-                           style="color:#dd4b39;">
-                            <i class="fa fa-2x fa-google-plus"></i>
                         </a>
                     </li>
                     <li>
