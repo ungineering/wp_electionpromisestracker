@@ -2,13 +2,14 @@
     /*
     Template Name: government_template
     */
-    get_header('government'); ?>
+    get_header(); ?>
 
  
     <script type="text/javascript"> var inaugration_date="<?php echo get_post_meta( get_the_ID(), 'inaugration_date' ,true)?>"</script>
     <?php
 
     $page_title = $wp_query->post->post_title;
+    $flag= get_post_meta( get_the_ID(), 'flag' ,true);
     $categories= get_post_meta( get_the_ID(), 'categories' ,true);
     $party_name= get_post_meta( get_the_ID(), 'party_name' ,true);
     $twitter_template=get_post_meta( get_the_ID(), 'twitter_template' ,true);
@@ -16,14 +17,15 @@
 
      $icons=array("First 100 Days"=>"clock-o",
     "Culture"=> "music",
-    "Economy"=>"dollar",
+    "Economy"=>"rupee",
     "Environment"=> "leaf",
-    "Government"=> "university",
+    "Governance"=> "university",
     "Immigration"=> "suitcase",
     "Indigenous"=> "users",
     "Security"=>"fighter-jet",
     "Health"=> "heart",
-    "World"=>"globe",
+    "Business & Industries"=>"globe",
+    "Agriculture"=>"tree",
     "Education"=>"graduation-cap",
     "School Education"=>"graduation-cap",
     "Pre-Primary Education"=> "graduation-cap",
@@ -31,31 +33,54 @@
 );
    $statuses = array( 
             "Fulfilled" => array (
-               "color" => "success",
-               "icon" => "check-circle-o"
+               "color" => "rgba(67, 207, 8, 0.23)",
+               "color_bright"=>"rgba(67, 207, 8, 0.62)",
+               "icon" => "check-circle-o",
+               "id"=>"fulfilled",
+               "old"=>"success"
             ),         
             "Adequate Progress" => array (
-               "color" => "warning",
-               "icon" => "cogs"
+               "color" => "rgb(204, 221, 232)",
+                "color_bright"=>"rgb(153, 204, 237)",
+               "icon" => "cogs",
+               "id"=>"aprogress",
+               "old"=>"warning"
             ),
             "Inadequate Progress"=>array(
-                "color"=>"warning",
-                "icon"=>"cog"
+                "color"=>"rgba(141, 153, 161, 0.56)",
+                 "color_bright"=>"rgba(141, 153, 161, 0.63)",
+                "icon"=>"cog",
+                "id"=>"iprogress",
+                "old"=>"info"
             ),
             "Yet to Start"=>array(
-                "color" => "info",
-                "icon"=>"hourglass-start"
+                "color" => "rgba(182, 46, 194, 0.17)",
+                 "color_bright"=>"rgba(182, 46, 194, 0.45)",
+                "icon"=>"hourglass-start",
+                "id"=>"ytstart",
+                "old"=>"compromised"
              ),
             "Stalled" => array (
-               "color" => "compromised",
-               "icon" => "handshake-o"
+               "color" => "rgba(246, 187, 55, 0.33)",
+                "color_bright"=>"rgba(246, 187, 55, 0.73)",
+               "icon" => "handshake-o",
+               "id"=>"stalled",
+               "old"=>"danger"
             ),
             "Broken" => array (
-               "color" => "danger",
-               "icon" => "ban"
+               "color" => "rgba(217, 83, 79, 0.4)",
+                "color_bright"=>"rgba(219, 96, 93, 0.82)",
+               "icon" => "ban",
+               "id"=>"broken",
+               "old"=>"danger"
             )
     ); 
-    $cats = explode(',', $categories);      
+      if($flag){
+   $cats= array("Education","Health","Economy","Business & Industries","Governance","Agriculture");}
+   else{
+    $cats=array("Education", "School Education", "Health", "Pre-Primary Education", "College Education");
+   }
+    //$cats = explode(',', $categories);      
 ?>
 
 
@@ -66,7 +91,7 @@ if ( $loop->have_posts() ) : while ( $loop->have_posts() ) : $loop->the_post(); 
                             <?php $status_count[get_post_meta( get_the_ID(), 'status' ,true)]++;
                             $total++;
                             ?>
-<?php endwhile; endif; ?>
+<?php endwhile; endif; wp_reset_postdata();?>
 
     <div class="container promises-header page-header" id="promises-header">
     <div class="row">
@@ -79,13 +104,13 @@ if ( $loop->have_posts() ) : while ( $loop->have_posts() ) : $loop->the_post(); 
                 </li> -->
                 <li class="list-group-item list-group-item">
                     <i class="fa fa-calendar fa-fw"></i>
-                    <b><?php echo $party_name?>'s Days In Office: <span id="days-in-office"><i class='loading'>Loading...</i></span></b>
+                    <b><?php echo $party_name?>'s Days In <?php the_title()?>: <span id="days-in-office"><i class='loading'>Loading...</i></span></b>
                 </li>
 
                     <?php foreach (array_keys($statuses) as $key): ?>
                      <?php $status_name=$key; $status_data=$statuses[$key];?>
               
-                    <li class="list-group-item list-group-item-<?php echo $status_data['color']?>"  data-list-facet="js-promise-status" data-facet-value="<?php echo $status_name?>" data-select-single="true" >
+                    <li class="list-group-item list-group-item-<?php echo $status_data['id']?> "  data-list-facet="js-promise-status" data-facet-value="<?php echo $status_name?>" data-select-single="true" style="background-color:<?php echo $status_data['color']?>; ">
                         <i class="fa fa-fw fa-<?php echo $status_data['icon']?> "></i>
                         <?php echo $status_name?>: <span class="active-points">
                             <?php if($status_count[$status_name])echo $status_count[$status_name];
@@ -99,23 +124,23 @@ if ( $loop->have_posts() ) : while ( $loop->have_posts() ) : $loop->the_post(); 
         </div>
 
         <div class="container-fluid">
-            <?php echo $wp_query->post->post_content     ?>
+            <?php echo $wp_query->post->post_content ?>
             <div id="share-buttons" class="text-center">
                 <ul class="list-inline">
                     <li>
-                        <a href="https://www.facebook.com/sharer.php?u=http://www.electionpromisestracker.in/" target="_blank"
+                        <a href="https://www.facebook.com/sharer.php?u=<?php the_permalink()?>" target="_blank"
                            style="color:#3b5998;">
                             <i class="fa fa-2x fa-facebook-square"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="https://plus.google.com/share?url=http://www.electionpromisestracker.in/" target="_blank"
+                        <a href="https://plus.google.com/share?url=<?php the_permalink()?>" target="_blank"
                            style="color:#dd4b39;">
                             <i class="fa fa-2x fa-google-plus"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="https://twitter.com/share?url=http://www.electionpromisestracker.in/&amp;text=Track&nbsp;&commat;AamAadmiParty&apos;s&nbsp;Electoral&nbsp;Promises&nbsp;with&nbsp;Election&nbsp;Promises&nbsp;Tracker."
+                        <a href="https://twitter.com/share?url=<?php the_permalink()?>;text=Track&nbsp;&commat;<?php echo $party_name?>&apos;s&nbsp;Electoral&nbsp;Promises&nbsp;with&nbsp;Election&nbsp;Promises&nbsp;Tracker."
                            target="_blank" style="color:#1da1f2;">
                             <i class="fa fa-2x fa-twitter"></i>
                         </a>
@@ -128,7 +153,7 @@ if ( $loop->have_posts() ) : while ( $loop->have_posts() ) : $loop->the_post(); 
 
 <div class="container-fluid promises" id="promises">
     <div class="row promises__search-row">
-        <div class="col-md-5">
+        <div class="col-md-4">
             <form action="#" class="form-inline">
                 <input id="search" type="text" class="form-control search" placeholder="Search">
                 <button class="promises__category--reset btn btn-default">
@@ -138,19 +163,21 @@ if ( $loop->have_posts() ) : while ( $loop->have_posts() ) : $loop->the_post(); 
             </form>
             <br>
         </div>
-        <div class="col-md-7" id="center-on-mobile">
+        <div class="col-md-8" id="center-on-mobile">
             <div class="pull-right">
 
                 <div class="promises__statuses">
-
+                  
                     <?php foreach (array_keys($statuses) as $key): ?>
                      <?php $status_name=$key; $status_data=$statuses[$key];?>
-
-                        <button class="btn btn-<?php echo $status_data['color'] ?>" data-list-facet="js-promise-status" data-facet-value="<?php echo $status_name ?>" data-select-single="true">
+                     
+                        <button class="btn btn-<?php echo $status_data['id'] ?> " data-list-facet="js-promise-status" data-facet-value="<?php echo $status_name ?>" data-select-single="true" style="background-color: <?php echo $status_data['color_bright'] ?>;  border-color: #333;">
                           <i class="fa fa-<?php echo $status_data['icon'] ?> fa-fw" aria-hidden="true"></i>
                             <span id="remove-on-mobile"> <?php echo $status_name ?></span>
                         </button>
+                        
                     <?php endforeach;?>
+
                 </div>
 
             </div>
@@ -162,7 +189,7 @@ if ( $loop->have_posts() ) : while ( $loop->have_posts() ) : $loop->the_post(); 
         <div class="row">
             <ul class="nav nav-tabs" id="myTabs" role="tablist" >
                 <?php foreach ($cats as $cat): ?>
-                    <li role="presentation" data-list-facet="js-promise-category" data-facet-value="<?php echo $cat ?>" class="<?php echo $cat ?>" >
+                    <li role="presentation" data-list-facet="js-promise-category" data-facet-value="<?php echo $cat ?>" class="<?php echo $cat ?>" data-select-single="true" >
                         <a href="#" role="tab" data-toggle="tab" class="text-muted">
                             <i class="fa fa-fw fa-<?php echo $icons[$cat]?>"></i>&nbsp;
                             <span id="remove-on-mobile"><?php echo $cat; ?></span>
@@ -189,27 +216,21 @@ if ( $loop->have_posts() ) : while ( $loop->have_posts() ) : $loop->the_post(); 
 
                         <tbody class="list">
                         <!-- add color to each policy -->
-                    <?php $index=0; $loop = new WP_Query( array( 'post_type' => 'promise', 'category_name' => $page_title, 'ignore_sticky_posts' => 1,'posts_per_page'=>-1, 'paged' => $paged ) );
+                    <?php $index=0; $loop = new WP_Query( array( 'post_type' => 'promise', 'category_name' => $page_title, 'ignore_sticky_posts' => 1, 'posts_per_page'=>-1,'paged' => $paged ) );
                             if ( $loop->have_posts() ) : while ( $loop->have_posts() ) : $loop->the_post(); ?>
 
                             <?php $status=get_post_meta( get_the_ID(), 'status' ,true); 
                                   $title=get_post_meta( get_the_ID(), 'title' ,true);
                                   $category=get_post_meta( get_the_ID(), 'category' ,true);
-                                  $var;
                                   $comment_count = $wp_query->post->comment_count;
-                                  if($status=='Inadequate Progress')$var="warning";
-                                  if($status=='Adequate Progress')$var="warning";
-                                  if($status=='Fulfilled')$var="success";
-                                  if($status=='Broken')$var="danger";
-                                  if($status=='Stalled')$var="compromised";
                             ?>
                 
-                                <tr class="promise <?php echo $var?>">
+                                <tr class="promise <?php echo $statuses[$status]['id'] ?> " style="background-color:<?php echo $statuses[$status]['color'] ?> ">
 
-                            <td class="promise__id"><?php echo ++$index?>.</td>
+                            <td class="promise__id"><?php  echo ++$index?>.</td>
 
                              <td class="promise__status hidden-sm hidden-md hidden-xs" title="<?php echo $status ?>">
-                                <i class="fa fa-fw fa-<?php echo $statuses[$status]['icon']?> text-<?php echo $statuses[$status]['color']?>" title="<?php echo $status; ?>"></i>
+                                <i class="fa fa-fw fa-<?php echo $statuses[$status]['icon']?> text-<?php echo $statuses[$status]['id']?>" title="<?php echo $status; ?>"></i>
                                 <span class="promise__status-text js-promise-status sr-only"><?php echo $status?></span>
                             </td>
                             <td class="promise__category hidden-sm hidden-md hidden-xs" style="white-space: nowrap;">
@@ -226,7 +247,7 @@ if ( $loop->have_posts() ) : while ( $loop->have_posts() ) : $loop->the_post(); 
                             -->
                             <span class="promise__status-text js-promise-status sr-only"><?php echo $status;?></span>
                             <b> 
-                            <a href="<?php the_permalink(); ?>">
+                            <a href="<?php the_permalink(); ?>" style="color:inherit; text-decoration: none;">
                             <?php the_title()?> </a>
                             </b>
 
@@ -262,16 +283,19 @@ if ( $loop->have_posts() ) : while ( $loop->have_posts() ) : $loop->the_post(); 
                                 ?>
                                 <div class="action"> 
                                 <ul class="list-inline">
-                               <li> <a href="<?php the_permalink(); ?>" target="_blank"> <button >Comments<?php if($comment_count)echo ":".$comment_count?> </button>
-                                </a>
+                            <li>
+                                 <a href="<?php the_permalink(); ?>" class="btn btn-info btn-sm" role="button" target="_blank"> 
+                                 <?php if($comment_count):?> 
+                                  <i class="fa fa-x fa-comments-o" aria-hidden="true"> Discuss</i>
+                              <?php else :?>
+                                    <i class="fa fa-x fa-comments-o" aria-hidden="true"> Discuss</i>
+                              <?php endif; ?>
+                                 </a>
+
                                 </li>
-                                <li>
-                                <a href="http://www.facebook.com/sharer/sharer.php?s=100&p[url]=<?php echo $url?>&p[title]=<?php echo $facebook_text?>&p[summary]=Description%20goes%20here!" target="_blank" onclick="window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=250'); return false"><i class="fa fa-facebook-square" aria-hidden="true"></i> Share </a>
-                                </li>
-                                <li>
-                                <a href="https://twitter.com/share?url=http://electionpromisestracker.in/&text=<?php echo $twitter_text ?> " target="_blank" onclick="window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=250'); return false"><i class="fa fa-twitter-square" aria-hidden="true"></i>Tweet</a>
-                                </li>
-                               </ul>
+                             </ul>
+
+
 
                                 </div>
                             </td>
@@ -292,4 +316,4 @@ if ( $loop->have_posts() ) : while ( $loop->have_posts() ) : $loop->the_post(); 
     </div>
     <!-- /#promises -->
 
-    <?php get_footer('government'); ?>
+    <?php get_footer(); ?>
