@@ -1,7 +1,6 @@
 <?php
     // WP Post Template: Promise
 ?>
-
 <?php
 function seo_title($title){
 $title="asdasd"; return $title;
@@ -29,12 +28,17 @@ return $content;
 
 <section id="promise">
     <?php
-        get_header();
+    get_header();
     ?>
     <div class="container" class="article_title">
         <div id="promise_category">
             <?php
-                echo get_post_meta($post->ID, "category", true);
+                
+            echo get_post_meta($post->ID, "status", true);
+                //echo $govt;
+                //echo promise_seo_title()
+                //print_r($wp_query);
+                  
             ?>
         </div>
         <h1 id="promise-description">
@@ -56,11 +60,16 @@ return $content;
                         $status_content = '"\f05d"';
                         $status_color   = "#5cb85c";
                         break;
-                    case 'Under Progress':
+                    case 'Adequate Progress':
                         $status_class   = "fa fa-cogs fa-fw"; 
                         $status_content = '"\f085"';
                         $status_color   = "#ec971f";    
                         break;
+                    case 'Inadequate Progress':
+                        $status_class   = "fa fa-cog fa-fw"; 
+                        $status_content = '"\f085"';
+                        $status_color   = "#ec971f";    
+                        break;                        
                     case 'Stalled':
                         $status_class   = "fa fa-handshake-o fa-fw"; 
                         $status_content = '"\f2b5"';
