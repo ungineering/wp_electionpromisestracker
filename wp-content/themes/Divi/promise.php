@@ -34,7 +34,7 @@ return $content;
         <div id="promise_category">
             <?php
                 
-            echo get_post_meta($post->ID, "status", true);
+            echo get_post_meta($post->ID, "category", true);
                 //echo $govt;
                 //echo promise_seo_title()
                 //print_r($wp_query);
