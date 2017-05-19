@@ -1,10 +1,10 @@
 # Keep these files out of the repo
 wp-content/themes/twenty*
 wp-content/upgrade
-wp-content/uploads
+#wp-content/uploads
 sitemap.*
 wp-config.php
-*.sql
+#*.sql
 
 # Hidden files
 *.DS_Store
