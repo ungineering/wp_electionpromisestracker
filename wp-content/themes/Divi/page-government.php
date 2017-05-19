@@ -150,7 +150,7 @@ if ( $loop->have_posts() ) : while ( $loop->have_posts() ) : $loop->the_post(); 
             <form action="#" class="form-inline">
                 <input id="search" type="text" class="form-control search" placeholder="Search">
                 <button class="promises__category--reset btn btn-default">
-                    <i class="fa fa-fw fa-refresh"></i> Clear
+                    <i class="fa fa-fw fa-refresh"></i>  View All Promises
                     <i class="fa fa-fw fa-filter"></i><span id="count"><?php echo $total ?></span>/<?php echo $total?>
                 </button>
             </form>

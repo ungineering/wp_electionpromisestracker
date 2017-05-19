@@ -10,12 +10,12 @@
   };
 
   // tooltip
-  $(function () {
+  $(function() {
     $('[data-toggle="tooltip"]').tooltip()
   });
 
   // tabs
-  $('#myTabs a').click(function (e) {
+  $('#myTabs a').click(function(e) {
     e.preventDefault()
     $(this).tab('show')
   });
@@ -41,9 +41,9 @@
     var today = moment();
     var inauguration = moment(inaugration_date);
     $('#inauguration-days').html(inauguration.diff(today, 'days') > 0 ? inauguration.diff(today, 'days') : 'NA');
-    
+
     $('#inauguration-time-container').hide(); //TEMP FIX 
-    
+
     $('#days-in-office').html(today.diff(inauguration, 'days') > 0 ? today.diff(inauguration, 'days') : 0);
 
     // List.js object that we can filter upon
@@ -72,17 +72,25 @@
     // Any facet filter button
     $facets.on('click', function(e) {
 
-      var facet = $(this).data('list-facet'); // ie 'js-promise-category'
-      var value = $(this).data('facet-value'); // ie 'Culture'
+      var facet = $(this).data('list-facet'); // ie 'js-promise-category' //js-promise-status
+      var value = $(this).data('facet-value'); // ie 'Culture' //Fulfilled
       var isSingle = !!$(this).data('select-single'); // ie true/false for if there can only be one of this filter
-
+      //var promiseSingle = !!$(this).data('promise-single');
       // Single-select categories should have their active state wiped
       if (isSingle) {
         $facets
-          .filter(function() { return $(this).data('list-facet') === facet; })
+          .filter(function() {
+            return $(this).data('list-facet') === facet;
+          })
           .removeClass('active');
       }
 
+      // if (promiseSingle) {
+      //   $facets.filter(function() {
+      //       return $(this).data('list-facet') === facet;
+      //     })
+      //     .removeClass('active');
+      // }
       // Flag as active
       $(this).toggleClass('active');
 
@@ -108,20 +116,27 @@
         var itemValues = item.values();
 
         // Single selects, eg "Not started"
-        var single = _.filter(facets, ['isSingle', true]);
-        var foundSingle = foundAny(single, itemValues);
+        var single = _.filter(facets, { 'isSingle': true, 'facet': 'js-promise-status'});
+        var statusMatch = foundAny(single, itemValues);
         // Single-selection items hide if false no matter what, so eject if not found here
-        if (!foundSingle) {
-          return false;
-        }
+        // if (!statusMatch) {
+        //   return false;
+        // }
 
         // Full categories can have multiples show, list out here
-        var multis = _.filter(facets, ['isSingle', false]);
-        return foundAny(multis, itemValues);
+        var multis = _.filter(facets, { 'isSingle': true, 'facet': 'js-promise-category'});
+        var categoryMatch=foundAny(multis,itemValues);
+
+        if(statusMatch && categoryMatch){
+          return true;
+        }
+        else return false;
 
       }); // promiseList.filter()
 
     });
+
+
   });
 
 })(jQuery, List, _, moment);
