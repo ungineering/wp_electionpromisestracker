@@ -240,7 +240,7 @@ if ( $loop->have_posts() ) : while ( $loop->have_posts() ) : $loop->the_post(); 
                             -->
                             <span class="promise__status-text js-promise-status sr-only"><?php echo $status;?></span>
                             <b> 
-                            <a href="<?php the_permalink(); ?>" style="color:#333; text-decoration: none;">
+                            <a href="<?php the_permalink(); ?>" target="_blank" style="color:#333; text-decoration: none;">
                             <?php the_title()?> </a>
                             </b>
 

@@ -30,10 +30,16 @@ return $content;
 <section id="promise">
     <?php
     get_header();
+
+    $parent=$wp_query->query['govt_type'];
+    $parent_page_id=get_page_by_path('governments/'.$parent)->ID;
+
+    $party_name= get_post_meta( $parent_page_id, 'party_name' ,true);
+    $party_link=the_permalink($parent_page_id);
     ?>
     <div class="container" class="article_title">
         <div class="government_page_link_container">
-            <a class="government_page_link_button" href="http://www.electionpromisestracker.in/governments/central-government/">Show me all promises of "BJP Government"</a>
+            <a class="government_page_link_button" href="<?php echo the_permalink($parent_page_id)?>">Show me all promises of <?php echo $party_name?> Government</a>
         </div>
         <div id="promise_category">
             <?php
