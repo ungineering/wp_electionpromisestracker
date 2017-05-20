@@ -32,6 +32,9 @@ return $content;
     get_header();
     ?>
     <div class="container" class="article_title">
+        <div class="government_page_link_container">
+            <a class="government_page_link_button" href="http://www.electionpromisestracker.in/governments/central-government/">Show me all promises of "BJP Government"</a>
+        </div>
         <div id="promise_category">
             <?php
                 
@@ -143,7 +146,26 @@ return $content;
     </div>
 </div>
 
- <style>
+<style>
+    .government_page_link_container {
+        text-align: right;
+        position: absolute;
+        top: -30px;
+        right: 0px;
+    }
+    .government_page_link_button {
+        background-color: transparent;
+        color: #2ea3f2;
+        font-weight: normal;
+        box-shadow: none;
+        border: solid 1px #2ea3f2;
+        padding: 9px 24px;
+    }
+    .government_page_link_button:hover {
+        background-color: #1e73be;
+        color: #ffffff;
+        border: none;
+    }
     #promise_content p {
         background-color: #f7f7f7;
         font-family: Lato, sans-serif;
@@ -195,6 +217,7 @@ return $content;
         margin-right: auto;
         padding-left: 1.4rem;
         padding-right: 1.4rem;
+        position: relative;
     }
 
     .article_title {
