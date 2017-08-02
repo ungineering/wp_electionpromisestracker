@@ -4,7 +4,7 @@
 
 Here are the steps to setup EPT on your local (this one is for Linux):
 
-1. Clone the GIT repository from: git@github.com:ungineering/wp_electionpromisestracker.git
+1. Clone the GIT repository
    I preferably do it in my home folder. This becomes your local repository.
 
 2. Create a new folder with the name electionpromisestracker (or anything you feel like) inside your web development folder (which is generally /var/www/html). This is your development folder. Here we assumed that you have apache (or an equivalent web server) is installed in your system.
