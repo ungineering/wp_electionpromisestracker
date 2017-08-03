@@ -1,10 +1,11 @@
 # wp_electionpromisestracker
 
-## setup Guide
+## Setup Guide
 
 Here are the steps to setup EPT on your local (this one is for Linux):
 
-1. Clone the Git repository (I preferably do it in my home folder). This becomes your local repository.
+1. Clone the GIT repository from: git@github.com:ungineering/wp_electionpromisestracker.git
+   I preferably do it in my home folder. This becomes your local repository.
 
 2. Create a new folder with the name electionpromisestracker (or anything you feel like) inside your web development folder (which is generally /var/www/html). This is your development folder. Here we assumed that you have apache (or an equivalent web server) is installed in your system.
 
@@ -21,18 +22,18 @@ Here are the steps to setup EPT on your local (this one is for Linux):
   Go to the folder - /etc/apache2/sites-enabled
   Create a new file with the name - ept.conf
   Add the following content in the file:
-<VirtualHost *:80 >
-    AllowEncodedSlashes On
-    ServerAdmin your@email.com
-    ServerName www.electionpromisestracker.in
-    DocumentRoot /var/www/html/electionpromisestracker/
-    <Directory /var/www/html/electionpromisestracker/>
-        AllowOverride All
-        Options FollowSymLinks
-    </Directory>
-    CustomLog /var/log/apache2/ept/access.log common
-    ErrorLog /var/log/apache2/ept/error.log
-</VirtualHost>
+    <VirtualHost *:80 >
+        AllowEncodedSlashes On
+        ServerAdmin your@email.com
+        ServerName www.electionpromisestracker.in
+        DocumentRoot /var/www/html/electionpromisestracker/
+        <Directory /var/www/html/electionpromisestracker/>
+            AllowOverride All
+            Options FollowSymLinks
+        </Directory>
+        CustomLog /var/log/apache2/ept/access.log common
+        ErrorLog /var/log/apache2/ept/error.log
+    </VirtualHost>
 
 6. Create the log folder:
   Go to the folder - /var/log/apache2
@@ -46,5 +47,3 @@ Here are the steps to setup EPT on your local (this one is for Linux):
   First, create a new database with the name ept.
   Then import the mentioned database file. You can do so from your terminal with the following command: 
   mysql -u username -p ept < ept.sql
-
-9. Now opening www.electionpromisestracker.in in your browser should fetch you the local version of the website. Disable wifi and check. If the website is still opening it is the local version.
