@@ -12,7 +12,7 @@ Here are the steps to setup EPT on your local (this one is for Linux):
 3. Copy the entire code from your local repository to the development folder you created in step 2.
    NOTE: Some people may clone the repository directly in the development folder and may have the local repository and the development folder as the same. But I prefer otherwise. It helps me visualize the changes done by others in the team and let me do less mistakes in overwriting those changes.
 
-4. Setting local DNS. Map www.electionpromisestracker.in to point to your own machine. 
+4. Setting local DNS. Map www.electionpromisestracker.in to point to your own machine.
    Open the file - /etc/hosts
    Add the following as the first line in the file:
    127.0.0.1  www.electionpromisestracker.in
@@ -22,7 +22,7 @@ Here are the steps to setup EPT on your local (this one is for Linux):
   Go to the folder - /etc/apache2/sites-enabled
   Create a new file with the name - ept.conf
   Add the following content in the file:
-    <VirtualHost *:80 >
+    <VirtualHost*:80 >
         AllowEncodedSlashes On
         ServerAdmin your@email.com
         ServerName www.electionpromisestracker.in
@@ -45,5 +45,10 @@ Here are the steps to setup EPT on your local (this one is for Linux):
 8. Create Database:
   We have a backup of the database stored along with our codebase in the git repository with the name ept.sql. You will find it in the root folder itself.
   First, create a new database with the name ept.
-  Then import the mentioned database file. You can do so from your terminal with the following command: 
+  Then import the mentioned database file. You can do so from your terminal with the following command:
   mysql -u username -p ept < ept.sql
+
+9. Now that you have successfully done the setup, open electionpromisestracker.in and check if the homepage is opening or not. Turn off wifi and see if the local version still works.
+
+10. Enabling permalinks:
+     Check links on homepage if they are working or not. If not, you will have to enable permalinks. For that, go to electionpromisestracker.in/wp-admin and fill in the credentials. Then go to Settings > permalinks and click on save changes. Restart servers and check if the links are working or not.
