@@ -29,7 +29,9 @@ $icons = array("First 100 Days" => "clock-o",
     "Education" => "graduation-cap",
     "School Education" => "graduation-cap",
     "Pre-Primary Education" => "graduation-cap",
-    "College Education" => "graduation-cap"
+    "College Education" => "graduation-cap",
+    "Flagship Promises"=>"star",
+    "Water"=>"bars"
 );
 $statuses = array(
     "Fulfilled" => array(
@@ -78,9 +80,10 @@ $statuses = array(
 if ($flag) {
     $cats = array("Education", "Health", "Economy", "Business and Industries", "Governance", "Agriculture");
 } else {
-    $cats = array("Education", "School Education", "Health", "Pre-Primary Education", "College Education");
+    $cats = array("Flagship Promises", "Education","Health", "Water");
 }
-//$cats = explode(',', $categories);      
+
+//$cats = explode(',', $categories);
 ?>
 
 
@@ -122,7 +125,7 @@ wp_reset_postdata();
 
                     <li class="list-group-item list-group-item-<?php echo $status_data['id'] ?> "  data-list-facet="js-promise-status" data-facet-value="<?php echo $status_name ?>" data-select-single="true" style="background-color:<?php echo $status_data['color'] ?>; ">
                         <i class="fa fa-fw fa-<?php echo $status_data['icon'] ?> "></i>
-                        <?php echo $status_name ?>: 
+                        <?php echo $status_name ?>:
                         <span class="active-points">
                             <?php
                             if ($status_count[$status_name])
@@ -130,7 +133,7 @@ wp_reset_postdata();
                             else
                                 echo "0";
                             ?>
-                        </span> of 
+                        </span> of
                         <span class="total-points">
                             <?php echo $total ?>
                         </span>
@@ -153,9 +156,9 @@ wp_reset_postdata();
                            target="_blank" style="color:#1da1f2;" onclick="window.open(this.href, 'targetWindow', 'toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=250'); return false">
                             <i class="fa fa-2x fa-twitter"></i>
                         </a>
-                    </li>                    
+                    </li>
                 </ul>
-            </div>            
+            </div>
         </div>
     </div>
 </div>
@@ -257,22 +260,22 @@ wp_reset_postdata();
                                     <b><span class="js-promise-category">{{ promise.category }}</span>:</b>
                                     -->
                                     <span class="promise__status-text js-promise-status sr-only"><?php echo $status; ?></span>
-                                    <b> 
+                                    <b>
                                         <a href="<?php the_permalink(); ?>" target="_blank" style="color:#333; text-decoration: none;"><?php the_title() ?> </a>
                                     </b>
 
                                     <!--<?php echo $statement; ?>
-                                                                     <br /> 
-                                                                     <b>Status</b>: <?php echo $state; ?> 
+                                                                     <br />
+                                                                     <b>Status</b>: <?php echo $state; ?>
                                     <?php
                                     $mykey_values = get_post_custom_values('sources');
                                     foreach ($mykey_values as $key => $source) {
                                         ?>
                                                                                                                     <sup><a href="<?php echo $source ?>"> <?php echo $key ?></a></sup>
                                     <?php } ?>
-                                     
-                                                                 <br />  -->               
-                                    <!--  <b> <a href="<?php the_permalink(); ?>"> <?php echo $title ?> </a></b>: 
+
+                                                                 <br />  -->
+                                    <!--  <b> <a href="<?php the_permalink(); ?>"> <?php echo $title ?> </a></b>:
                                     <?php echo $statement; ?>
                                                                 <br /> -->
                                     <!-- <b>Status</b>: <?php echo $state; ?> -->
@@ -293,11 +296,11 @@ wp_reset_postdata();
                                     $twitter_text = str_replace($variables, $constants, $twitter_template);
                                     $facebook_text = str_replace($variables, $constants, $facebook_template);
                                     ?>
-                                    <div class="action"> 
+                                    <div class="action">
                                         <ul class="list-inline">
                                             <li>
-                                                <a href="<?php the_permalink(); ?>" class="btn btn-info btn-sm" role="button" target="_blank"> 
-                                                    <?php if ($comment_count): ?> 
+                                                <a href="<?php the_permalink(); ?>" class="btn btn-info btn-sm" role="button" target="_blank">
+                                                    <?php if ($comment_count): ?>
                                                         <i class="fa fa-x fa-comments-o" aria-hidden="true"> Discuss</i>
                                                     <?php else : ?>
                                                         <i class="fa fa-x fa-comments-o" aria-hidden="true"> Discuss</i>
@@ -325,7 +328,7 @@ wp_reset_postdata();
                     endif;
                 endif;
                 wp_reset_postdata();
-                ?>                                                                      
+                ?>
                 </tbody>
             </table>
         </div>
