@@ -5,7 +5,9 @@
 get_header();
 ?>
 
-<script type="text/javascript"> var inaugration_date = "<?php echo get_post_meta(get_the_ID(), 'inaugration_date', true) ?>"</script>
+<script type="text/javascript">
+    var inaugration_date = "<?php echo get_post_meta(get_the_ID(), 'inaugration_date', true) ?>"
+</script>
 
 <?php
 $page_title = $wp_query->post->post_title;
@@ -30,8 +32,8 @@ $icons = array("First 100 Days" => "clock-o",
     "School Education" => "graduation-cap",
     "Pre-Primary Education" => "graduation-cap",
     "College Education" => "graduation-cap",
-    "Flagship Promises"=>"star",
-    "Water"=>"bars"
+    "Flagship Promises" => "star",
+    "Water" => "bars"
 );
 $statuses = array(
     "Fulfilled" => array(
@@ -80,7 +82,7 @@ $statuses = array(
 if ($flag) {
     $cats = array("Education", "Health", "Economy", "Business and Industries", "Governance", "Agriculture");
 } else {
-    $cats = array("Flagship Promises", "Education","Health", "Water");
+    $cats = array("Flagship Promises", "Education", "Health", "Water");
 }
 
 //$cats = explode(',', $categories);
@@ -88,19 +90,14 @@ if ($flag) {
 
 
 <?php
-$total = 0;
+$total_promises = 0;
 $loop = new WP_Query(array('post_type' => 'promise', 'category_name' => $page_title, 'ignore_sticky_posts' => 1, 'posts_per_page' => -1, 'paged' => $paged));
-if ($loop->have_posts()) :
-    while ($loop->have_posts()) :
-        $loop->the_post();
-        ?>
-        <?php
-        $status_count[get_post_meta(get_the_ID(), 'status', true)] ++;
-        $total++;
-        ?>
-        <?php
-    endwhile;
-endif;
+
+while ($loop->have_posts()) :
+    $loop->the_post();
+    $status_promises_count[get_post_meta(get_the_ID(), 'status', true)] ++;
+    $total_promises++;
+endwhile;
 wp_reset_postdata();
 ?>
 
@@ -123,19 +120,20 @@ wp_reset_postdata();
                     $status_data = $statuses[$key];
                     ?>
 
-                    <li class="list-group-item list-group-item-<?php echo $status_data['id'] ?> "  data-list-facet="js-promise-status" data-facet-value="<?php echo $status_name ?>" data-select-single="true" style="background-color:<?php echo $status_data['color'] ?>; ">
+                    <li class="list-group-item list-group-item-<?php echo $status_data['id'] ?>" data-list-facet="js-promise-status" data-facet-value="<?php echo $status_name ?>" data-select-single="true" style="background-color:<?php echo $status_data['color'] ?>; ">
                         <i class="fa fa-fw fa-<?php echo $status_data['icon'] ?> "></i>
                         <?php echo $status_name ?>:
                         <span class="active-points">
                             <?php
-                            if ($status_count[$status_name])
-                                echo $status_count[$status_name];
-                            else
+                            if ($status_promises_count[$status_name]) {
+                                echo $status_promises_count[$status_name];
+                            } else {
                                 echo "0";
+                            }
                             ?>
                         </span> of
                         <span class="total-points">
-                            <?php echo $total ?>
+                            <?php echo $total_promises ?>
                         </span>
                     </li>
                 <?php endforeach; ?>
@@ -170,7 +168,7 @@ wp_reset_postdata();
                 <input id="search" type="text" class="form-control search" placeholder="Search">
                 <button class="promises__category--reset btn btn-default">
                     <i class="fa fa-fw fa-refresh"></i>  View All Promises
-                    <i class="fa fa-fw fa-filter"></i><span id="count"><?php echo $total ?></span>/<?php echo $total ?>
+                    <i class="fa fa-fw fa-filter"></i><span id="count"><?php echo $total_promises ?></span>/<?php echo $total_promises ?>
                 </button>
             </form>
             <br>
@@ -209,7 +207,6 @@ wp_reset_postdata();
 
         <div class="row promises__table container-fluid">
             <table class="table table-striped table-sm">
-
                 <thead>
                     <tr>
                         <th><!-- ID --></th>
@@ -227,106 +224,65 @@ wp_reset_postdata();
                     <?php
                     $index = 0;
                     $loop = new WP_Query(array('post_type' => 'promise', 'category_name' => $page_title, 'ignore_sticky_posts' => 1, 'posts_per_page' => -1, 'paged' => $paged));
-                    if ($loop->have_posts()) :
-                        while ($loop->have_posts()) :
-                            $loop->the_post();
-                            ?>
 
-                            <?php
-                            $status = get_post_meta(get_the_ID(), 'status', true);
-                            $title = get_post_meta(get_the_ID(), 'title', true);
-                            $category = get_post_meta(get_the_ID(), 'category', true);
-                            $comment_count = $wp_query->post->comment_count;
-                            ?>
+                    while ($loop->have_posts()) :
+                        $loop->the_post();
 
-                            <tr class="promise <?php echo $statuses[$status]['id'] ?> " style="background-color:<?php echo $statuses[$status]['color'] ?> ">
+                        $status = get_post_meta(get_the_ID(), 'status', true);
+                        $title = get_post_meta(get_the_ID(), 'title', true);
+                        $category = get_post_meta(get_the_ID(), 'category', true);
+                        $comment_count = $wp_query->post->comment_count;
+                        ?>
 
-                                <td class="promise__id"><?php echo ++$index ?>.</td>
+                        <tr class="promise <?php echo $statuses[$status]['id'] ?> " style="background-color:<?php echo $statuses[$status]['color'] ?> ">
 
-                                <td class="promise__status hidden-sm hidden-md hidden-xs" title="<?php echo $status ?>">
-                                    <i class="fa fa-fw fa-<?php echo $statuses[$status]['icon'] ?> text-<?php echo $statuses[$status]['id'] ?>" title="<?php echo $status; ?>"></i>
-                                    <span class="promise__status-text js-promise-status sr-only"><?php echo $status ?></span>
-                                </td>
-                                <td class="promise__category" style="white-space: nowrap;">
-                                    <i class="fa fa-fw fa-<?php echo $icons[$category] ?>"></i> <span class="js-promise-category" id="remove-on-mobile"><?php echo $category; ?></span>
-                                </td>
-                                <!-- <td class="promise__tags" style="text-align: center;">
-                                    {% for tag in promise.tags %}
-                                    <a class="label label-default">{{ tag }}</a>
-                                    {% endfor %}
-                                </td> -->
-                                <td class="promise__title js-promise-text">
-                                    <!--
-                                    <b><span class="js-promise-category">{{ promise.category }}</span>:</b>
-                                    -->
-                                    <span class="promise__status-text js-promise-status sr-only"><?php echo $status; ?></span>
-                                    <b>
-                                        <a href="<?php the_permalink(); ?>" target="_blank" style="color:#333; text-decoration: none;"><?php the_title() ?> </a>
-                                    </b>
+                            <td class="promise__id"><?php echo ++$index ?>.</td>
 
-                                    <!--<?php echo $statement; ?>
-                                                                     <br />
-                                                                     <b>Status</b>: <?php echo $state; ?>
-                                    <?php
-                                    $mykey_values = get_post_custom_values('sources');
-                                    foreach ($mykey_values as $key => $source) {
-                                        ?>
-                                                                                                                    <sup><a href="<?php echo $source ?>"> <?php echo $key ?></a></sup>
-                                    <?php } ?>
+                            <td class="promise__status hidden-sm hidden-md hidden-xs" title="<?php echo $status ?>">
+                                <i class="fa fa-fw fa-<?php echo $statuses[$status]['icon'] ?> text-<?php echo $statuses[$status]['id'] ?>" title="<?php echo $status; ?>"></i>
+                                <span class="promise__status-text js-promise-status sr-only"><?php echo $status ?></span>
+                            </td>
+                            <td class="promise__category" style="white-space: nowrap;">
+                                <i class="fa fa-fw fa-<?php echo $icons[$category] ?>"></i> <span class="js-promise-category" id="remove-on-mobile"><?php echo $category; ?></span>
+                            </td>
 
-                                                                 <br />  -->
-                                    <!--  <b> <a href="<?php the_permalink(); ?>"> <?php echo $title ?> </a></b>:
-                                    <?php echo $statement; ?>
-                                                                <br /> -->
-                                    <!-- <b>Status</b>: <?php echo $state; ?> -->
-                                    <!-- add superscript citations and sources -->
-                                </td>
-                                <!-- <td class="promise__sources" style="white-space: nowrap;">
-                                </td> -->
-                                <td class="promise__actions">
-                                    <!-- comment and twitter integration -->
-                                    <!--<a href="{{promise.comments}}" target="_blank" rel="nofollow">-->
-                                    <!--<i class="fa fa-fw fa-comments text-muted" aria-hidden="true"></i></a> -->
-                                    <?php
-                                    $variables = array("*promise_status*", "*promise_title*");
-                                    ob_start();
-                                    the_permalink();
-                                    $url = ob_get_clean();
-                                    $constants = array($status, $title);
-                                    $twitter_text = str_replace($variables, $constants, $twitter_template);
-                                    $facebook_text = str_replace($variables, $constants, $facebook_template);
-                                    ?>
-                                    <div class="action">
-                                        <ul class="list-inline">
-                                            <li>
-                                                <a href="<?php the_permalink(); ?>" class="btn btn-info btn-sm" role="button" target="_blank">
-                                                    <?php if ($comment_count): ?>
-                                                        <i class="fa fa-x fa-comments-o" aria-hidden="true"> Discuss</i>
-                                                    <?php else : ?>
-                                                        <i class="fa fa-x fa-comments-o" aria-hidden="true"> Discuss</i>
-                                                    <?php endif; ?>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr>
-                            <?php
-                        endwhile;
-
-                        if ($loop->max_num_pages > 1) :
-                            ?>
-                        <div id="nav-below" class="navigation">
-                            <div class="nav-previous">
-                                <?php next_posts_link(__('<span class="meta-nav">&larr;</span> Previous', 'domain')); ?>
-                            </div>
-                            <div class="nav-next">
-                                <?php previous_posts_link(__('Next <span class="meta-nav">&rarr;</span>', 'domain')); ?>
-                            </div>
-                        </div>
+                            <td class="promise__title js-promise-text">
+                                <span class="promise__status-text js-promise-status sr-only"><?php echo $status; ?></span>
+                                <b>
+                                    <a href="<?php the_permalink(); ?>" target="_blank" style="color:#333; text-decoration: none;"><?php the_title() ?> </a>
+                                </b>
+                            </td>
+                            <td class="promise__actions">
+                                <div class="action">
+                                    <ul class="list-inline">
+                                        <li>
+                                            <a href="<?php the_permalink(); ?>" class="btn btn-info btn-sm" role="button" target="_blank">
+                                                <?php if ($comment_count): ?>
+                                                    <i class="fa fa-x fa-comments-o" aria-hidden="true"> Discuss</i>
+                                                <?php else : ?>
+                                                    <i class="fa fa-x fa-comments-o" aria-hidden="true"> Discuss</i>
+                                                <?php endif; ?>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
                         <?php
-                    endif;
+                    endwhile;
+                    if ($loop->max_num_pages > 1):
+                        ?>
+                    <div id="nav-below" class="navigation">
+                        <div class="nav-previous">
+                            <?php next_posts_link(__('<span class="meta-nav">&larr;</span> Previous', 'domain')); ?>
+                        </div>
+                        <div class="nav-next">
+                            <?php previous_posts_link(__('Next <span class="meta-nav">&rarr;</span>', 'domain')); ?>
+                        </div>
+                    </div>
+                    <?php
                 endif;
+
                 wp_reset_postdata();
                 ?>
                 </tbody>
