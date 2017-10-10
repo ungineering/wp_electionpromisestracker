@@ -6,66 +6,60 @@ get_header();
 ?>
 
 <style id="theme-customizer-css">
-                                                                    a { color: #1e73be; }
-                                    #main-header .nav li ul { background-color: ; }
-                                                                    .et_header_style_centered .mobile_nav .select_page, .et_header_style_split .mobile_nav .select_page, .et_nav_text_color_light #top-menu > li > a, .et_nav_text_color_dark #top-menu > li > a, #top-menu a, .et_mobile_menu li a, .et_nav_text_color_light .et_mobile_menu li a, .et_nav_text_color_dark .et_mobile_menu li a, #et_search_icon:before, .et_search_form_container input, span.et_close_search_field:after, #et-top-navigation .et-cart-info { color: ; }
-            .et_search_form_container input::-moz-placeholder { color: ; }
-            .et_search_form_container input::-webkit-input-placeholder { color: ; }
-            .et_search_form_container input:-ms-input-placeholder { color: ; }
-                                            #top-menu li a { font-size: 16px; }
-            body.et_vertical_nav .container.et_search_form_container .et-search-form input { font-size: 16px !important; }
-        
-        
-                            #main-footer { background-color: #f9f9f9; }
-                                                        #footer-info, #footer-info a { font-weight: bold; font-style: normal; text-transform: none; text-decoration: none;  }                                   body .et_pb_button,
-            .woocommerce a.button.alt, .woocommerce-page a.button.alt, .woocommerce button.button.alt, .woocommerce-page button.button.alt, .woocommerce input.button.alt, .woocommerce-page input.button.alt, .woocommerce #respond input#submit.alt, .woocommerce-page #respond input#submit.alt, .woocommerce #content input.button.alt, .woocommerce-page #content input.button.alt,
-            .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce-message a.button.wc-forward
-            {
-                                     font-size: 14px;
-                                                                                                    border-radius: 1px;
-                                                            }
-            body.et_pb_button_helper_class .et_pb_button,
-            .woocommerce.et_pb_button_helper_class a.button.alt, .woocommerce-page.et_pb_button_helper_class a.button.alt, .woocommerce.et_pb_button_helper_class button.button.alt, .woocommerce-page.et_pb_button_helper_class button.button.alt, .woocommerce.et_pb_button_helper_class input.button.alt, .woocommerce-page.et_pb_button_helper_class input.button.alt, .woocommerce.et_pb_button_helper_class #respond input#submit.alt, .woocommerce-page.et_pb_button_helper_class #respond input#submit.alt, .woocommerce.et_pb_button_helper_class #content input.button.alt, .woocommerce-page.et_pb_button_helper_class #content input.button.alt,
-            .woocommerce.et_pb_button_helper_class a.button, .woocommerce-page.et_pb_button_helper_class a.button, .woocommerce.et_pb_button_helper_class button.button, .woocommerce-page.et_pb_button_helper_class button.button, .woocommerce.et_pb_button_helper_class input.button, .woocommerce-page.et_pb_button_helper_class input.button, .woocommerce.et_pb_button_helper_class #respond input#submit, .woocommerce-page.et_pb_button_helper_class #respond input#submit, .woocommerce.et_pb_button_helper_class #content input.button, .woocommerce-page.et_pb_button_helper_class #content input.button {
-                            }
-                            body .et_pb_button:after,
-            .woocommerce a.button.alt:after, .woocommerce-page a.button.alt:after, .woocommerce button.button.alt:after, .woocommerce-page button.button.alt:after, .woocommerce input.button.alt:after, .woocommerce-page input.button.alt:after, .woocommerce #respond input#submit.alt:after, .woocommerce-page #respond input#submit.alt:after, .woocommerce #content input.button.alt:after, .woocommerce-page #content input.button.alt:after,
-            .woocommerce a.button:after, .woocommerce-page a.button:after, .woocommerce button.button:after, .woocommerce-page button.button:after, .woocommerce input.button:after, .woocommerce-page input.button:after, .woocommerce #respond input#submit:after, .woocommerce-page #respond input#submit:after, .woocommerce #content input.button:after, .woocommerce-page #content input.button:after
-            {
-                                    font-size: 22.4px;
-                                            }
-                            body .et_pb_button:hover,
-            .woocommerce a.button.alt:hover, .woocommerce-page a.button.alt:hover, .woocommerce button.button.alt:hover, .woocommerce-page button.button.alt:hover, .woocommerce input.button.alt:hover, .woocommerce-page input.button.alt:hover, .woocommerce #respond input#submit.alt:hover, .woocommerce-page #respond input#submit.alt:hover, .woocommerce #content input.button.alt:hover, .woocommerce-page #content input.button.alt:hover,
-            .woocommerce a.button:hover, .woocommerce-page a.button:hover, .woocommerce button.button:hover, .woocommerce-page button.button:hover, .woocommerce input.button:hover, .woocommerce-page input.button:hover, .woocommerce #respond input#submit:hover, .woocommerce-page #respond input#submit:hover, .woocommerce #content input.button:hover, .woocommerce-page #content input.button:hover
-            {
-                                                                                    border-radius: 1px;
-                                            }
-        
-        
-                                                                                                                        
-        @media only screen and ( min-width: 981px ) {
-                                                                                                                                                                            .et_header_style_centered.et_hide_primary_logo #main-header:not(.et-fixed-header) .logo_container, .et_header_style_centered.et_hide_fixed_logo #main-header.et-fixed-header .logo_container { height: 11.88px; }
-                                                                                                    .et-fixed-header #top-menu a, .et-fixed-header #et_search_icon:before, .et-fixed-header #et_top_search .et-search-form input, .et-fixed-header .et_search_form_container input, .et-fixed-header .et_close_search_field:after, .et-fixed-header #et-top-navigation .et-cart-info { color:  !important; }
-                .et-fixed-header .et_search_form_container input::-moz-placeholder { color:  !important; }
-                .et-fixed-header .et_search_form_container input::-webkit-input-placeholder { color:  !important; }
-                .et-fixed-header .et_search_form_container input:-ms-input-placeholder { color:  !important; }
-                                    
-                    }
-                    @media only screen and ( min-width: 1350px) {
-                .et_pb_row { padding: 27px 0; }
-                .et_pb_section { padding: 54px 0; }
-                .single.et_pb_pagebuilder_layout.et_full_width_page .et_post_meta_wrapper { padding-top: 81px; }
-                .et_pb_section.et_pb_section_first { padding-top: inherit; }
-                .et_pb_fullwidth_section { padding: 0; }
-            }
-        
-        @media only screen and ( max-width: 980px ) {
-                                                                                }
-        @media only screen and ( max-width: 767px ) {
-                                                        }
-    </style>
+a { color: #1e73be; }
+#main-header .nav li ul { background-color: ; }
+.et_header_style_centered .mobile_nav .select_page, .et_header_style_split .mobile_nav .select_page, 
+.et_nav_text_color_light #top-menu > li > a, .et_nav_text_color_dark #top-menu > li > a, #top-menu a, 
+.et_mobile_menu li a, .et_nav_text_color_light .et_mobile_menu li a, .et_nav_text_color_dark .et_mobile_menu
+li a, #et_search_icon:before, .et_search_form_container input, span.et_close_search_field:after, 
+#et-top-navigation .et-cart-info { color: ; }
+.et_search_form_container input::-moz-placeholder { color: ; }
+.et_search_form_container input::-webkit-input-placeholder { color: ; }
+.et_search_form_container input:-ms-input-placeholder { color: ; }
+#top-menu li a { font-size: 16px; }
+body.et_vertical_nav .container.et_search_form_container .et-search-form input 
+{ font-size: 16px !important;}
+#main-footer { background-color: #f9f9f9; }
+#footer-info, #footer-info a { font-weight: bold; font-style: normal; text-transform: none; 
+text-decoration: none;  }
+body .et_pb_button, .woocommerce a.button.alt, .woocommerce-page a.button.alt,
+.woocommerce button.button.alt, .woocommerce-page button.button.alt, .woocommerce input.button.alt,
+.woocommerce-page input.button.alt, .woocommerce #respond input#submit.alt,
+.woocommerce-page #respond input#submit.alt, .woocommerce #content input.button.alt,
+.woocommerce-page #content input.button.alt, .woocommerce a.button, .woocommerce-page a.button, 
+.woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button,
+.woocommerce-page input.button, .woocommerce #respond input#submit,
+.woocommerce-page #respond input#submit, .woocommerce #content input.button,
+.woocommerce-page #content input.button, .woocommerce-message a.button.wc-forward
+{ font-size: 14px; border-radius: 1px; }
+body.et_pb_button_helper_class .et_pb_button,
+.woocommerce.et_pb_button_helper_class a.button.alt, .woocommerce-page.et_pb_button_helper_class a.button.alt, .woocommerce.et_pb_button_helper_class button.button.alt, .woocommerce-page.et_pb_button_helper_class button.button.alt, .woocommerce.et_pb_button_helper_class input.button.alt, .woocommerce-page.et_pb_button_helper_class input.button.alt, .woocommerce.et_pb_button_helper_class #respond input#submit.alt, .woocommerce-page.et_pb_button_helper_class #respond input#submit.alt, .woocommerce.et_pb_button_helper_class #content input.button.alt, .woocommerce-page.et_pb_button_helper_class #content input.button.alt,
+.woocommerce.et_pb_button_helper_class a.button, .woocommerce-page.et_pb_button_helper_class a.button, .woocommerce.et_pb_button_helper_class button.button, .woocommerce-page.et_pb_button_helper_class button.button, .woocommerce.et_pb_button_helper_class input.button, .woocommerce-page.et_pb_button_helper_class input.button, .woocommerce.et_pb_button_helper_class #respond input#submit, .woocommerce-page.et_pb_button_helper_class #respond input#submit, .woocommerce.et_pb_button_helper_class #content input.button, .woocommerce-page.et_pb_button_helper_class #content input.button {}
+body .et_pb_button:after,
+.woocommerce a.button.alt:after, .woocommerce-page a.button.alt:after, .woocommerce button.button.alt:after, .woocommerce-page button.button.alt:after, .woocommerce input.button.alt:after, .woocommerce-page input.button.alt:after, .woocommerce #respond input#submit.alt:after, .woocommerce-page #respond input#submit.alt:after, .woocommerce #content input.button.alt:after, .woocommerce-page #content input.button.alt:after, .woocommerce a.button:after, .woocommerce-page a.button:after, .woocommerce button.button:after, .woocommerce-page button.button:after, .woocommerce input.button:after, .woocommerce-page input.button:after, .woocommerce #respond input#submit:after, .woocommerce-page #respond input#submit:after, .woocommerce #content input.button:after, .woocommerce-page #content input.button:after { font-size: 22.4px; }
+body .et_pb_button:hover,
+.woocommerce a.button.alt:hover, .woocommerce-page a.button.alt:hover, .woocommerce button.button.alt:hover, .woocommerce-page button.button.alt:hover, .woocommerce input.button.alt:hover, .woocommerce-page input.button.alt:hover, .woocommerce #respond input#submit.alt:hover, .woocommerce-page #respond input#submit.alt:hover, .woocommerce #content input.button.alt:hover, .woocommerce-page #content input.button.alt:hover,
+.woocommerce a.button:hover, .woocommerce-page a.button:hover, .woocommerce button.button:hover, .woocommerce-page button.button:hover, .woocommerce input.button:hover, .woocommerce-page input.button:hover, .woocommerce #respond input#submit:hover, .woocommerce-page #respond input#submit:hover, .woocommerce #content input.button:hover, .woocommerce-page #content input.button:hover
+{ border-radius: 1px; }
+@media only screen and ( min-width: 981px ) {
+.et_header_style_centered.et_hide_primary_logo #main-header:not(.et-fixed-header) .logo_container, .et_header_style_centered.et_hide_fixed_logo #main-header.et-fixed-header .logo_container { height: 11.88px; }
+.et-fixed-header #top-menu a, .et-fixed-header #et_search_icon:before, .et-fixed-header #et_top_search .et-search-form input, .et-fixed-header .et_search_form_container input, .et-fixed-header .et_close_search_field:after, .et-fixed-header #et-top-navigation .et-cart-info { color:  !important; }
+.et-fixed-header .et_search_form_container input::-moz-placeholder { color:  !important; }
+.et-fixed-header .et_search_form_container input::-webkit-input-placeholder { color:  !important; }
+.et-fixed-header .et_search_form_container input:-ms-input-placeholder { color:  !important; }
+}
+@media only screen and ( min-width: 1350px) {
+.et_pb_row { padding: 27px 0; }
+.et_pb_section { padding: 54px 0; }
+.single.et_pb_pagebuilder_layout.et_full_width_page .et_post_meta_wrapper { padding-top: 81px; }
+.et_pb_section.et_pb_section_first { padding-top: inherit; }
+.et_pb_fullwidth_section { padding: 0; }
+}
+@media only screen and ( max-width: 980px ) {}
+@media only screen and ( max-width: 767px ) {}
+</style>
 
-                <style type="text/css" id="wp-custom-css">
+<style type="text/css" id="wp-custom-css">
             /*Division for making columns like in bootstrap*/
 
 .ten-columns .et_pb_module {width: 10%; float: left;}
@@ -204,8 +198,8 @@ $icons = array("First 100 Days" => "clock-o",
     "School Education" => "graduation-cap",
     "Pre-Primary Education" => "graduation-cap",
     "College Education" => "graduation-cap",
-    "Flagship Promises" => "star",
-    "Water" => "bars"
+    "Flagship Promises"=>"star",
+    "Water"=>"bars"
 );
 $statuses = array(
     "Fulfilled" => array(
@@ -260,7 +254,7 @@ $statuses = array(
 if ($flag) {
     $cats = array("Education", "Health", "Economy", "Business and Industries", "Governance", "Agriculture");
 } else {
-    $cats = array("Flagship Promises", "Education", "Health", "Water");
+    $cats = array("Flagship Promises", "Education","Health", "Water");
 }
 
 //$cats = explode(',', $categories);
@@ -270,12 +264,17 @@ if ($flag) {
 <?php
 $total_promises = 0;
 $loop = new WP_Query(array('post_type' => 'promise', 'category_name' => $page_title, 'ignore_sticky_posts' => 1, 'posts_per_page' => -1, 'paged' => $paged));
-
-while ($loop->have_posts()) :
-    $loop->the_post();
-    $status_promises_count[get_post_meta(get_the_ID(), 'status', true)] ++;
-    $total_promises++;
-endwhile;
+if ($loop->have_posts()) :
+    while ($loop->have_posts()) :
+        $loop->the_post();
+        ?>
+        <?php
+        $status_promises_count[get_post_meta(get_the_ID(), 'status', true)] ++;
+        $total_promises++;
+        ?>
+        <?php
+    endwhile;
+endif;
 wp_reset_postdata();
 ?>
 
@@ -304,7 +303,7 @@ wp_reset_postdata();
                     $status_name = $key;
                     $status_data = $statuses[$key];
                 ?>
-                <div class="et_pb_blurb et_pb_module et_pb_bg_layout_light et_pb_text_align_left et_pb_blurb_<?php echo $index ?> et_pb_blurb_position_left">
+                <div class="et_pb_blurb et_pb_module et_pb_bg_layout_light et_pb_text_align_left et_pb_blurb_<?php echo $index ?> et_pb_blurb_position_left"  data-list-facet="js-promise-status" data-facet-value="<?php echo $status_name ?>" data-select-single="true">
                     <div class="et_pb_blurb_content">
                         <div class="et_pb_main_blurb_image"><span class="et-pb-icon et-waypoint et_pb_animation_top" style="color: rgba(0,0,0,0.76);"><?php echo $status_data['icon_hex']?></span></div>
                         <div class="et_pb_blurb_container">
@@ -369,39 +368,57 @@ wp_reset_postdata();
             </div> <!-- .et_pb_row -->
 
 </div>
-
-
-
-<!-- The above part is done. -->
-
-
+<div class="promises" id="promises">
 
             <div class="et_pb_section  et_pb_section_1 et_section_regular">
+                
+                
+                    
                     <div class=" et_pb_row et_pb_row_2 et_pb_row_fullwidth">
+                
                 <div class="et_pb_column et_pb_column_1_2  et_pb_column_6">
+                
                 <div class="et_pb_text et_pb_module et_pb_bg_layout_light et_pb_text_align_left  et_pb_text_2">
+                
 <h2 style="display: inline;"><strong>Promises made</strong></h2>
 
             </div> <!-- .et_pb_text -->
             </div> <!-- .et_pb_column -->
-            <div class="et_pb_column et_pb_column_1_2  et_pb_column_7">
+
+
+<!-- <div class="promises" id="promises"> -->
+<div class="et_pb_column et_pb_column_1_2  et_pb_column_7">
                 
                 <div class="et_pb_search et_pb_module et_pb_bg_layout_light et_pb_text_align_left  et_pb_search_0">
-                <form role="search" method="get" class="et_pb_searchform" action="http://www.electionpromisestracker.in/">
+                <form role="search" method="get" class="et_pb_searchform" action="#">
                     <div>
                         <label class="screen-reader-text" for="s">Search for:</label>
-                        <input type="text" value="" name="s" class="et_pb_s" placeholder="Search any promise by words">
-                        <input type="hidden" name="et_pb_searchform_submit" value="et_search_proccess" />
+                        <input type="text" value="" id="search" name="s" class="et_pb_s search" placeholder="Search any promise by words">
+                        <!-- <input type="hidden" name="et_pb_searchform_submit" value="et_search_proccess" /> -->
                         
-                        <input type="hidden" name="et_pb_include_posts" value="yes" />
-                        <input type="hidden" name="et_pb_include_pages" value="yes" />
-                        <input type="submit" value="Search" class="et_pb_searchsubmit">
+                        <!-- <input type="hidden" name="et_pb_include_posts" value="yes" /> -->
+                        <!-- <input type="hidden" name="et_pb_include_pages" value="yes" /> -->
+                        <!-- <input type="submit" value="Search" class="et_pb_searchsubmit"> -->
                     </div>
                 </form>
             </div> <!-- .et_pb_text -->
             </div> <!-- .et_pb_column -->
             </div> <!-- .et_pb_row -->
+        </div>
 
+                <!-- THE ABOVE IS DONE. Search also works. -->
+
+
+<!-- <div class="container-fluid promises" id="promises"> -->
+    <div class="row">
+            <form action="#" class="form-inline">
+                <input id="search" type="text" class="search" placeholder="Search">
+                <button class="promises__category--reset btn btn-default">
+                    <i class="fa fa-fw fa-refresh"></i>  View All Promises
+                    <i class="fa fa-fw fa-filter"></i><span id="count"><?php echo $total ?></span>/<?php echo $total ?>
+                </button>
+            </form>
+            <br>
         <div class="col-md-8" id="center-on-mobile">
             <div class="pull-right">
                 <div class="promises__statuses">
@@ -436,6 +453,7 @@ wp_reset_postdata();
 
         <div class="row promises__table container-fluid">
             <table class="table table-striped table-sm">
+
                 <thead>
                     <tr>
                         <th><!-- ID --></th>
@@ -453,65 +471,106 @@ wp_reset_postdata();
                     <?php
                     $index = 0;
                     $loop = new WP_Query(array('post_type' => 'promise', 'category_name' => $page_title, 'ignore_sticky_posts' => 1, 'posts_per_page' => -1, 'paged' => $paged));
+                    if ($loop->have_posts()) :
+                        while ($loop->have_posts()) :
+                            $loop->the_post();
+                            ?>
 
-                    while ($loop->have_posts()) :
-                        $loop->the_post();
+                            <?php
+                            $status = get_post_meta(get_the_ID(), 'status', true);
+                            $title = get_post_meta(get_the_ID(), 'title', true);
+                            $category = get_post_meta(get_the_ID(), 'category', true);
+                            $comment_count = $wp_query->post->comment_count;
+                            ?>
 
-                        $status = get_post_meta(get_the_ID(), 'status', true);
-                        $title = get_post_meta(get_the_ID(), 'title', true);
-                        $category = get_post_meta(get_the_ID(), 'category', true);
-                        $comment_count = $wp_query->post->comment_count;
-                        ?>
+                            <tr class="promise <?php echo $statuses[$status]['id'] ?> " style="background-color:<?php echo $statuses[$status]['color'] ?> ">
 
-                        <tr class="promise <?php echo $statuses[$status]['id'] ?> " style="background-color:<?php echo $statuses[$status]['color'] ?> ">
+                                <td class="promise__id"><?php echo ++$index ?>.</td>
 
-                            <td class="promise__id"><?php echo ++$index ?>.</td>
+                                <td class="promise__status hidden-sm hidden-md hidden-xs" title="<?php echo $status ?>">
+                                    <i class="fa fa-fw fa-<?php echo $statuses[$status]['icon'] ?> text-<?php echo $statuses[$status]['id'] ?>" title="<?php echo $status; ?>"></i>
+                                    <span class="promise__status-text js-promise-status sr-only"><?php echo $status ?></span>
+                                </td>
+                                <td class="promise__category" style="white-space: nowrap;">
+                                    <i class="fa fa-fw fa-<?php echo $icons[$category] ?>"></i> <span class="js-promise-category" id="remove-on-mobile"><?php echo $category; ?></span>
+                                </td>
+                                <!-- <td class="promise__tags" style="text-align: center;">
+                                    {% for tag in promise.tags %}
+                                    <a class="label label-default">{{ tag }}</a>
+                                    {% endfor %}
+                                </td> -->
+                                <td class="promise__title js-promise-text">
+                                    <!--
+                                    <b><span class="js-promise-category">{{ promise.category }}</span>:</b>
+                                    -->
+                                    <span class="promise__status-text js-promise-status sr-only"><?php echo $status; ?></span>
+                                    <b>
+                                        <a href="<?php the_permalink(); ?>" target="_blank" style="color:#333; text-decoration: none;"><?php the_title() ?> </a>
+                                    </b>
 
-                            <td class="promise__status hidden-sm hidden-md hidden-xs" title="<?php echo $status ?>">
-                                <i class="fa fa-fw fa-<?php echo $statuses[$status]['icon'] ?> text-<?php echo $statuses[$status]['id'] ?>" title="<?php echo $status; ?>"></i>
-                                <span class="promise__status-text js-promise-status sr-only"><?php echo $status ?></span>
-                            </td>
-                            <td class="promise__category" style="white-space: nowrap;">
-                                <i class="fa fa-fw fa-<?php echo $icons[$category] ?>"></i> <span class="js-promise-category" id="remove-on-mobile"><?php echo $category; ?></span>
-                            </td>
+                                    <!--<?php echo $statement; ?>
+                                                                     <br />
+                                                                     <b>Status</b>: <?php echo $state; ?>
+                                    <?php
+                                    $mykey_values = get_post_custom_values('sources');
+                                    foreach ($mykey_values as $key => $source) {
+                                        ?>
+                                                                                                                    <sup><a href="<?php echo $source ?>"> <?php echo $key ?></a></sup>
+                                    <?php } ?>
 
-                            <td class="promise__title js-promise-text">
-                                <span class="promise__status-text js-promise-status sr-only"><?php echo $status; ?></span>
-                                <b>
-                                    <a href="<?php the_permalink(); ?>" target="_blank" style="color:#333; text-decoration: none;"><?php the_title() ?> </a>
-                                </b>
-                            </td>
-                            <td class="promise__actions">
-                                <div class="action">
-                                    <ul class="list-inline">
-                                        <li>
-                                            <a href="<?php the_permalink(); ?>" class="btn btn-info btn-sm" role="button" target="_blank">
-                                                <?php if ($comment_count): ?>
-                                                    <i class="fa fa-x fa-comments-o" aria-hidden="true"> Discuss</i>
-                                                <?php else : ?>
-                                                    <i class="fa fa-x fa-comments-o" aria-hidden="true"> Discuss</i>
-                                                <?php endif; ?>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
+                                                                 <br />  -->
+                                    <!--  <b> <a href="<?php the_permalink(); ?>"> <?php echo $title ?> </a></b>:
+                                    <?php echo $statement; ?>
+                                                                <br /> -->
+                                    <!-- <b>Status</b>: <?php echo $state; ?> -->
+                                    <!-- add superscript citations and sources -->
+                                </td>
+                                <!-- <td class="promise__sources" style="white-space: nowrap;">
+                                </td> -->
+                                <td class="promise__actions">
+                                    <!-- comment and twitter integration -->
+                                    <!--<a href="{{promise.comments}}" target="_blank" rel="nofollow">-->
+                                    <!--<i class="fa fa-fw fa-comments text-muted" aria-hidden="true"></i></a> -->
+                                    <?php
+                                    $variables = array("*promise_status*", "*promise_title*");
+                                    ob_start();
+                                    the_permalink();
+                                    $url = ob_get_clean();
+                                    $constants = array($status, $title);
+                                    $twitter_text = str_replace($variables, $constants, $twitter_template);
+                                    $facebook_text = str_replace($variables, $constants, $facebook_template);
+                                    ?>
+                                    <div class="action">
+                                        <ul class="list-inline">
+                                            <li>
+                                                <a href="<?php the_permalink(); ?>" class="btn btn-info btn-sm" role="button" target="_blank">
+                                                    <?php if ($comment_count): ?>
+                                                        <i class="fa fa-x fa-comments-o" aria-hidden="true"> Discuss</i>
+                                                    <?php else : ?>
+                                                        <i class="fa fa-x fa-comments-o" aria-hidden="true"> Discuss</i>
+                                                    <?php endif; ?>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <?php
+                        endwhile;
+
+                        if ($loop->max_num_pages > 1) :
+                            ?>
+                        <div id="nav-below" class="navigation">
+                            <div class="nav-previous">
+                                <?php next_posts_link(__('<span class="meta-nav">&larr;</span> Previous', 'domain')); ?>
+                            </div>
+                            <div class="nav-next">
+                                <?php previous_posts_link(__('Next <span class="meta-nav">&rarr;</span>', 'domain')); ?>
+                            </div>
+                        </div>
                         <?php
-                    endwhile;
-                    if ($loop->max_num_pages > 1):
-                        ?>
-                    <div id="nav-below" class="navigation">
-                        <div class="nav-previous">
-                            <?php next_posts_link(__('<span class="meta-nav">&larr;</span> Previous', 'domain')); ?>
-                        </div>
-                        <div class="nav-next">
-                            <?php previous_posts_link(__('Next <span class="meta-nav">&rarr;</span>', 'domain')); ?>
-                        </div>
-                    </div>
-                    <?php
+                    endif;
                 endif;
-
                 wp_reset_postdata();
                 ?>
                 </tbody>
