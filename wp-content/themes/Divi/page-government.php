@@ -410,15 +410,38 @@ wp_reset_postdata();
 
 
 <!-- <div class="container-fluid promises" id="promises"> -->
-    <div class="row">
+<div class=" et_pb_row et_pb_row_3">
+
+<div class="et_pb_column et_pb_column_4_4  et_pb_column_8">
+                
+        <div class="et_pb_text et_pb_module et_pb_bg_layout_light et_pb_text_align_left responsive et_pb_text_3">
+                
+            <p> 
+                <button class="status_button promises__category--reset" type="button">View All Promises</button>
+
+            <?php foreach (array_keys($statuses) as $key): ?>
+                <?php 
+                $status_name = $key;
+                $status_data = $statuses[$key];
+                 ?>
+                 <button class="status_button btn-<?php echo $status_data['id'] ?>" data-list-facet="js-promise-status" data-facet-value="<?php echo $status_name ?>" data-select-single="true" type="button"><?php echo $status_name; ?></button>
+             <?php endforeach; ?>
+            </p>
+
+            </div> <!-- .et_pb_text -->
+
+
+
+
+            </div>
+
             <form action="#" class="form-inline">
                 <input id="search" type="text" class="search" placeholder="Search">
                 <button class="promises__category--reset btn btn-default">
                     <i class="fa fa-fw fa-refresh"></i>  View All Promises
-                    <i class="fa fa-fw fa-filter"></i><span id="count"><?php echo $total ?></span>/<?php echo $total ?>
+                    <i class="fa fa-fw fa-filter"></i><span id="count"><?php echo $total_promises ?></span>/<?php echo $total_promises ?>
                 </button>
             </form>
-            <br>
         <div class="col-md-8" id="center-on-mobile">
             <div class="pull-right">
                 <div class="promises__statuses">
