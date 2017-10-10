@@ -4,7 +4,6 @@
  */
 get_header();
 ?>
-<link rel='stylesheet' id='tablepress-default-css'  href='http://www.electionpromisestracker.in/wp-content/plugins/tablepress/css/default.min.css?ver=1.8' type='text/css' media='all' />
 
 <style id="theme-customizer-css">
                                                                     a { color: #1e73be; }
@@ -307,9 +306,9 @@ wp_reset_postdata();
                 ?>
                 <div class="et_pb_blurb et_pb_module et_pb_bg_layout_light et_pb_text_align_left et_pb_blurb_<?php echo $index ?> et_pb_blurb_position_left">
                     <div class="et_pb_blurb_content">
-                        <div class="et_pb_main_blurb_image"><a href="http://%20"><span class="et-pb-icon et-waypoint et_pb_animation_top" style="color: rgba(0,0,0,0.76);"><?php echo $status_data['icon_hex']?></span></a></div>
+                        <div class="et_pb_main_blurb_image"><span class="et-pb-icon et-waypoint et_pb_animation_top" style="color: rgba(0,0,0,0.76);"><?php echo $status_data['icon_hex']?></span></div>
                         <div class="et_pb_blurb_container">
-                            <h4><a href="http://%20"><?php echo $status_name ?>:
+                            <h4><?php echo $status_name ?>:
                                 <?php
                                     if($status_promises_count[$status_name]) {
                                         echo $status_promises_count[$status_name];
@@ -318,7 +317,7 @@ wp_reset_postdata();
                                     }
                                 ?>
                                 of <?php echo $total_promises ?>
-                            </a></h4>
+                            </h4>
                         </div>
                     </div>
                 </div>
@@ -377,18 +376,32 @@ wp_reset_postdata();
 
 
 
-<div class="container-fluid promises" id="promises">
-    <div class="row promises__search-row">
-        <div class="col-md-4">
-            <form action="#" class="form-inline">
-                <input id="search" type="text" class="form-control search" placeholder="Search">
-                <button class="promises__category--reset btn btn-default">
-                    <i class="fa fa-fw fa-refresh"></i>  View All Promises
-                    <i class="fa fa-fw fa-filter"></i><span id="count"><?php echo $total_promises ?></span>/<?php echo $total_promises ?>
-                </button>
-            </form>
-            <br>
-        </div>
+            <div class="et_pb_section  et_pb_section_1 et_section_regular">
+                    <div class=" et_pb_row et_pb_row_2 et_pb_row_fullwidth">
+                <div class="et_pb_column et_pb_column_1_2  et_pb_column_6">
+                <div class="et_pb_text et_pb_module et_pb_bg_layout_light et_pb_text_align_left  et_pb_text_2">
+<h2 style="display: inline;"><strong>Promises made</strong></h2>
+
+            </div> <!-- .et_pb_text -->
+            </div> <!-- .et_pb_column -->
+            <div class="et_pb_column et_pb_column_1_2  et_pb_column_7">
+                
+                <div class="et_pb_search et_pb_module et_pb_bg_layout_light et_pb_text_align_left  et_pb_search_0">
+                <form role="search" method="get" class="et_pb_searchform" action="http://www.electionpromisestracker.in/">
+                    <div>
+                        <label class="screen-reader-text" for="s">Search for:</label>
+                        <input type="text" value="" name="s" class="et_pb_s" placeholder="Search any promise by words">
+                        <input type="hidden" name="et_pb_searchform_submit" value="et_search_proccess" />
+                        
+                        <input type="hidden" name="et_pb_include_posts" value="yes" />
+                        <input type="hidden" name="et_pb_include_pages" value="yes" />
+                        <input type="submit" value="Search" class="et_pb_searchsubmit">
+                    </div>
+                </form>
+            </div> <!-- .et_pb_text -->
+            </div> <!-- .et_pb_column -->
+            </div> <!-- .et_pb_row -->
+
         <div class="col-md-8" id="center-on-mobile">
             <div class="pull-right">
                 <div class="promises__statuses">
