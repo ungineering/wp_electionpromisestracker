@@ -429,50 +429,31 @@ wp_reset_postdata();
             </p>
 
             </div> <!-- .et_pb_text -->
+            <div class="et_pb_text et_pb_module et_pb_bg_layout_light et_pb_text_align_left  et_pb_text_4">
+<p><strong>Select categories to see the promises made by Delhi Government</strong></p>
+</div> <!-- .et_pb_text -->
+<div class="et_pb_module et_pb_tabs table-responsive et_pb_tabs_0">
+                <ul class="et_pb_tabs_controls clearfix nav nav-tabs" id="myTabs" role="tablist">
+                <li class="et_pb_tab_0 et_pb_tab_active promises__category--reset"><a href="#">All Categories</a></li>
+                <?php $index = 1; ?>
+                    <?php foreach ($cats as $cat): ?>
+                    <li role="presentation" data-list-facet="js-promise-category" data-facet-value="<?php echo $cat ?>" class="et_pb_tab_<?php echo $index; ?> <?php echo $cat; ?>"  data-select-single="true">
+                        <a href="#" role="tab" data-toggle="tab" class="text-muted">
+                            <span><?php echo $cat; ?></span>
+                        </a>
+                    </li>
+                <?php $index = $index + 1; 
+                    endforeach;
+                ?>
+                </ul>
+
+</div>
 
 
-
-
-            </div>
-
-            <form action="#" class="form-inline">
-                <input id="search" type="text" class="search" placeholder="Search">
-                <button class="promises__category--reset btn btn-default">
-                    <i class="fa fa-fw fa-refresh"></i>  View All Promises
-                    <i class="fa fa-fw fa-filter"></i><span id="count"><?php echo $total_promises ?></span>/<?php echo $total_promises ?>
-                </button>
-            </form>
-        <div class="col-md-8" id="center-on-mobile">
-            <div class="pull-right">
-                <div class="promises__statuses">
-                    <?php foreach (array_keys($statuses) as $key): ?>
-                        <?php
-                        $status_name = $key;
-                        $status_data = $statuses[$key];
-                        ?>
-                        <button class="btn btn-<?php echo $status_data['id'] ?> " data-list-facet="js-promise-status" data-facet-value="<?php echo $status_name ?>" data-select-single="true" style="background-color: <?php echo $status_data['color_bright'] ?>;  border-color: #333;">
-                            <i class="fa fa-<?php echo $status_data['icon'] ?> fa-fw" aria-hidden="true"></i>
-                            <span> <?php echo $status_name ?></span>
-                        </button>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-        </div>
+            <!-- </div> -->
     </div>
 
     <div class="container-fluid">
-        <div class="row">
-            <ul class="nav nav-tabs" id="myTabs" role="tablist" >
-                <?php foreach ($cats as $cat): ?>
-                    <li role="presentation" data-list-facet="js-promise-category" data-facet-value="<?php echo $cat ?>" class="<?php echo $cat ?>" data-select-single="true" >
-                        <a href="#" role="tab" data-toggle="tab" class="text-muted">
-                            <i class="fa fa-fw fa-<?php echo $icons[$cat] ?>"></i>&nbsp;
-                            <span ><?php echo $cat; ?></span>
-                        </a>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
-        </div>
 
         <div class="row promises__table container-fluid">
             <table class="table table-striped table-sm">
@@ -538,7 +519,7 @@ wp_reset_postdata();
                                     $mykey_values = get_post_custom_values('sources');
                                     foreach ($mykey_values as $key => $source) {
                                         ?>
-                                                                                                                    <sup><a href="<?php echo $source ?>"> <?php echo $key ?></a></sup>
+                                        <sup><a href="<?php echo $source ?>"> <?php echo $key ?></a></sup>
                                     <?php } ?>
 
                                                                  <br />  -->
