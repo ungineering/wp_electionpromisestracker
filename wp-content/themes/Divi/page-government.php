@@ -158,6 +158,13 @@ only screen and (max-width: 760px),
 
 
 <script type="text/javascript">
+            function makeActive(tabNumber, totalTabs){
+                var i;
+                for(i = 0; i <= totalTabs; i++) {
+                    $('.et_pb_tabs_controls li.et_pb_tab_'+ i).removeClass('et_pb_tab_active');
+                }
+                $('.et_pb_tabs_controls li.et_pb_tab_'+ tabNumber).addClass('et_pb_tab_active');
+            }
     (function($) {
         $(window).load(function() {
             $('body').removeClass('page-template-page-government-php');
@@ -253,8 +260,10 @@ $statuses = array(
 );
 if ($flag) {
     $cats = array("Education", "Health", "Economy", "Business and Industries", "Governance", "Agriculture");
+    $globalIdx = 6;
 } else {
     $cats = array("Flagship Promises", "Education","Health", "Water");
+    $globalIdx = 4;
 }
 
 //$cats = explode(',', $categories);
@@ -413,7 +422,7 @@ wp_reset_postdata();
         <div class="et_pb_text et_pb_module et_pb_bg_layout_light et_pb_text_align_left responsive et_pb_text_3">
                 
             <p> 
-                <button class="status_button promises__category--reset" type="button">View All Promises</button>
+                <button class="status_button promises__category--reset" type="button" onclick="makeActive(0, <?php echo $globalIdx; ?>);">View All Promises</button>
 
             <?php foreach (array_keys($statuses) as $key): ?>
                 <?php 
@@ -430,21 +439,21 @@ wp_reset_postdata();
 </div> <!-- .et_pb_text -->
 <div class="et_pb_module et_pb_tabs table-responsive et_pb_tabs_0">
                 <ul class="et_pb_tabs_controls clearfix" id="myTabs" role="tablist">
-                <li class="et_pb_tab_0 et_pb_tab_active promises__category--reset"><a href="#">All Categories</a></li>
+                <li class="et_pb_tab_0 et_pb_tab_active promises__category--reset" onclick="makeActive(0, <?php echo $globalIdx; ?>);"><a href="#">All Categories</a></li>
                 <?php $index = 1; ?>
                     <?php foreach ($cats as $cat): ?>
-                    <li role="presentation" data-list-facet="js-promise-category" data-facet-value="<?php echo $cat ?>" class="et_pb_tab_0 <?php echo $cat; ?>"  data-select-single="true">
+                    <li id="mytab_<?php echo $index; ?>" role="presentation" data-list-facet="js-promise-category" data-facet-value="<?php echo $cat ?>" class="et_pb_tab_<?php echo $index; ?> <?php echo $cat; ?>"  data-select-single="true" onclick="makeActive(<?php echo $index; ?>, <?php echo $globalIdx; ?>);">
                         <a href="#" role="tab" data-toggle="tab" class="text-muted">
                             <span><?php echo $cat; ?></span>
                         </a>
                     </li>
-                <?php $index = $index + 1; 
-                    endforeach;
-                ?>
+                <?php $index = $index + 1; ?>
+                <?php endforeach; ?>
                 </ul>
+
             <div>
 
-    <div class="et_pb_tab clearfix et_pb_active_content et_pb_tab_0">
+    <div class="et_pb_tab clearfix et_pb_active_content et_pb_tab_0 et_pb_tab_1 et_pb_tab_2 et_pb_tab_3 et_pb_tab_4">
         <div class="table-responsive">
             <table class="table">
                 <thead>
