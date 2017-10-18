@@ -42,6 +42,7 @@ body .et_pb_button:hover,
 .woocommerce a.button:hover, .woocommerce-page a.button:hover, .woocommerce button.button:hover, .woocommerce-page button.button:hover, .woocommerce input.button:hover, .woocommerce-page input.button:hover, .woocommerce #respond input#submit:hover, .woocommerce-page #respond input#submit:hover, .woocommerce #content input.button:hover, .woocommerce-page #content input.button:hover
 { border-radius: 1px; }
 @media only screen and ( min-width: 981px ) {
+    td.promise__actions { width: 150px; } /*CSS Added to fix moving of columns during "Discuss" button hover. */
 .et_header_style_centered.et_hide_primary_logo #main-header:not(.et-fixed-header) .logo_container, .et_header_style_centered.et_hide_fixed_logo #main-header.et-fixed-header .logo_container { height: 11.88px; }
 .et-fixed-header #top-menu a, .et-fixed-header #et_search_icon:before, .et-fixed-header #et_top_search .et-search-form input, .et-fixed-header .et_search_form_container input, .et-fixed-header .et_close_search_field:after, .et-fixed-header #et-top-navigation .et-cart-info { color:  !important; }
 .et-fixed-header .et_search_form_container input::-moz-placeholder { color:  !important; }
@@ -158,13 +159,15 @@ only screen and (max-width: 760px),
 
 
 <script type="text/javascript">
-            function makeActive(tabNumber, totalTabs){
-                var i;
-                for(i = 0; i <= totalTabs; i++) {
-                    $('.et_pb_tabs_controls li.et_pb_tab_'+ i).removeClass('et_pb_tab_active');
-                }
-                $('.et_pb_tabs_controls li.et_pb_tab_'+ tabNumber).addClass('et_pb_tab_active');
-            }
+    /*Function makeActive is used to fix the functioning of the tabs. et_pb_tab_active class added*/
+    function makeActive(tabNumber, totalTabs){
+        var i;
+        for(i = 0; i <= totalTabs; i++) {
+            $('.et_pb_tabs_controls li.et_pb_tab_'+ i).removeClass('et_pb_tab_active');
+        }
+        $('.et_pb_tabs_controls li.et_pb_tab_'+ tabNumber).addClass('et_pb_tab_active');
+    }
+    /*The following is done to remove redundant classes and add the needed ones.*/
     (function($) {
         $(window).load(function() {
             $('body').removeClass('page-template-page-government-php');
@@ -494,7 +497,7 @@ wp_reset_postdata();
                                     <span class="js-promise-category"><?php echo $category; ?></span>
                                 </td>
 
-                                <td class="promise__title js-promise-text">
+                                <td class="promise__title js-promise-text" style="text-align: justify;">
                                 
                                     <span class="promise__status-text js-promise-status sr-only"><?php echo $status; ?></span>
                                     <b>
