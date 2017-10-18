@@ -281,7 +281,6 @@ wp_reset_postdata();
 <!-- <div class="container promises-header page-header" id="promises-header"> -->
 <div id="main-content">
     <!-- <div class="row"> -->
-                <article id="post-1410" class="post-1410 page type-page status-publish hentry">
                     <div class="entry-content">
                     <div class="et_pb_section  et_pb_section_0 et_pb_with_background et_section_regular">
                     <div class=" et_pb_row et_pb_row_0 et_pb_row_fullwidth">
@@ -406,9 +405,6 @@ wp_reset_postdata();
             </div> <!-- .et_pb_row -->
         </div>
 
-                <!-- THE ABOVE IS DONE. Search also works. -->
-
-
 <!-- <div class="container-fluid promises" id="promises"> -->
 <div class=" et_pb_row et_pb_row_3">
 
@@ -433,11 +429,11 @@ wp_reset_postdata();
 <p><strong>Select categories to see the promises made by Delhi Government</strong></p>
 </div> <!-- .et_pb_text -->
 <div class="et_pb_module et_pb_tabs table-responsive et_pb_tabs_0">
-                <ul class="et_pb_tabs_controls clearfix nav nav-tabs" id="myTabs" role="tablist">
+                <ul class="et_pb_tabs_controls clearfix" id="myTabs" role="tablist">
                 <li class="et_pb_tab_0 et_pb_tab_active promises__category--reset"><a href="#">All Categories</a></li>
                 <?php $index = 1; ?>
                     <?php foreach ($cats as $cat): ?>
-                    <li role="presentation" data-list-facet="js-promise-category" data-facet-value="<?php echo $cat ?>" class="et_pb_tab_<?php echo $index; ?> <?php echo $cat; ?>"  data-select-single="true">
+                    <li role="presentation" data-list-facet="js-promise-category" data-facet-value="<?php echo $cat ?>" class="et_pb_tab_0 <?php echo $cat; ?>"  data-select-single="true">
                         <a href="#" role="tab" data-toggle="tab" class="text-muted">
                             <span><?php echo $cat; ?></span>
                         </a>
@@ -446,31 +442,21 @@ wp_reset_postdata();
                     endforeach;
                 ?>
                 </ul>
+            <div>
 
-</div>
-
-
-            <!-- </div> -->
-    </div>
-
-    <div class="container-fluid">
-
-        <div class="row promises__table container-fluid">
-            <table class="table table-striped table-sm">
-
+    <div class="et_pb_tab clearfix et_pb_active_content et_pb_tab_0">
+        <div class="table-responsive">
+            <table class="table">
                 <thead>
                     <tr>
-                        <th><!-- ID --></th>
-                        <th class="hidden-sm hidden-md hidden-xs">Status</th>
-                        <th >Category</th>
-                        <!-- <th>Tags</th> -->
+                        <th>SNo</th>
+                        <th>Status</th>
+                        <th>Category</th>
                         <th>Promise</th>
-                        <!-- <th>Sources</th> -->
-                        <th class=" hidden-sm hidden-md hidden-xs">Actions</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
-
-                <tbody class="list">
+                    <tbody class="list">
                     <!-- add color to each policy -->
                     <?php
                     $index = 0;
@@ -491,50 +477,22 @@ wp_reset_postdata();
 
                                 <td class="promise__id"><?php echo ++$index ?>.</td>
 
-                                <td class="promise__status hidden-sm hidden-md hidden-xs" title="<?php echo $status ?>">
-                                    <i class="fa fa-fw fa-<?php echo $statuses[$status]['icon'] ?> text-<?php echo $statuses[$status]['id'] ?>" title="<?php echo $status; ?>"></i>
-                                    <span class="promise__status-text js-promise-status sr-only"><?php echo $status ?></span>
+                                <td class="promise__status" title="<?php echo $status ?>">
+                                    <span class="et-pb-icon" style="font-size: 16px;"><?php echo $statuses[$status]['icon_hex']; ?></span>
+                                    
                                 </td>
                                 <td class="promise__category" style="white-space: nowrap;">
-                                    <i class="fa fa-fw fa-<?php echo $icons[$category] ?>"></i> <span class="js-promise-category" id="remove-on-mobile"><?php echo $category; ?></span>
+                                    <span class="js-promise-category"><?php echo $category; ?></span>
                                 </td>
-                                <!-- <td class="promise__tags" style="text-align: center;">
-                                    {% for tag in promise.tags %}
-                                    <a class="label label-default">{{ tag }}</a>
-                                    {% endfor %}
-                                </td> -->
+
                                 <td class="promise__title js-promise-text">
-                                    <!--
-                                    <b><span class="js-promise-category">{{ promise.category }}</span>:</b>
-                                    -->
+                                
                                     <span class="promise__status-text js-promise-status sr-only"><?php echo $status; ?></span>
                                     <b>
                                         <a href="<?php the_permalink(); ?>" target="_blank" style="color:#333; text-decoration: none;"><?php the_title() ?> </a>
                                     </b>
-
-                                    <!--<?php echo $statement; ?>
-                                                                     <br />
-                                                                     <b>Status</b>: <?php echo $state; ?>
-                                    <?php
-                                    $mykey_values = get_post_custom_values('sources');
-                                    foreach ($mykey_values as $key => $source) {
-                                        ?>
-                                        <sup><a href="<?php echo $source ?>"> <?php echo $key ?></a></sup>
-                                    <?php } ?>
-
-                                                                 <br />  -->
-                                    <!--  <b> <a href="<?php the_permalink(); ?>"> <?php echo $title ?> </a></b>:
-                                    <?php echo $statement; ?>
-                                                                <br /> -->
-                                    <!-- <b>Status</b>: <?php echo $state; ?> -->
-                                    <!-- add superscript citations and sources -->
                                 </td>
-                                <!-- <td class="promise__sources" style="white-space: nowrap;">
-                                </td> -->
                                 <td class="promise__actions">
-                                    <!-- comment and twitter integration -->
-                                    <!--<a href="{{promise.comments}}" target="_blank" rel="nofollow">-->
-                                    <!--<i class="fa fa-fw fa-comments text-muted" aria-hidden="true"></i></a> -->
                                     <?php
                                     $variables = array("*promise_status*", "*promise_title*");
                                     ob_start();
@@ -544,19 +502,7 @@ wp_reset_postdata();
                                     $twitter_text = str_replace($variables, $constants, $twitter_template);
                                     $facebook_text = str_replace($variables, $constants, $facebook_template);
                                     ?>
-                                    <div class="action">
-                                        <ul class="list-inline">
-                                            <li>
-                                                <a href="<?php the_permalink(); ?>" class="btn btn-info btn-sm" role="button" target="_blank">
-                                                    <?php if ($comment_count): ?>
-                                                        <i class="fa fa-x fa-comments-o" aria-hidden="true"> Discuss</i>
-                                                    <?php else : ?>
-                                                        <i class="fa fa-x fa-comments-o" aria-hidden="true"> Discuss</i>
-                                                    <?php endif; ?>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                    <a href="<?php the_permalink(); ?>" title="Discuss" class="et_pb_button" role="button" target="_blank">Discuss</a>
                                 </td>
                             </tr>
                             <?php
@@ -578,10 +524,21 @@ wp_reset_postdata();
                 wp_reset_postdata();
                 ?>
                 </tbody>
-            </table>
+                </table>
         </div>
     </div>
+
+
 </div>
+
+
+            <!-- </div> -->
+    </div>
+</div>
+</div>
+</div>
+</div>
+    </div>
     <style type="text/css" id="et-builder-advanced-style">
                 
 .et_pb_blurb_6 .et-pb-icon { font-size: 16px; }
@@ -652,6 +609,7 @@ ul.et_pb_social_media_follow_0 { align: right; }
             </style>
 
 <!-- /#promises -->
+
 
 <?php echo do_shortcode('[wpdevart_facebook_comment curent_url="http://www.electionpromisestracker.in/' . $wp_query->query['pagename'] . '/" order_type="social" title_text="Facebook Comment" title_text_color="#000000" title_text_font_size="22" title_text_font_famely="monospace" title_text_position="left" width="100%" bg_color="#d4d4d4" animation_effect="random" count_of_comments="3" ]'); ?>
 
