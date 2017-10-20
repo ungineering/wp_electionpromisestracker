@@ -66,8 +66,57 @@
       promiseList.filter();
     }
 
+    function removeCategory(e) {
+/* Function called on click of "All Categories button".
+ * 'active' class is removed from the category tab. and then filter is applied.
+ */
+      for(var i = 1;i <= totalPromises; i++) {
+        $('#mytab_' + i).removeClass('active');
+      }
+      // Array of active
+      var facets = $facets.filter('.active').map(function() {
+        // return object instead with facet/value
+        return {
+          facet: $(this).data('list-facet'),
+          value: $(this).data('facet-value'),
+          isSingle: !!$(this).data('select-single')
+        };
+      }).get();
+
+      // When deselecting last, clear all filters
+      if (facets.length === 0) {
+        promiseList.filter();
+        return; // Eject now
+      }
+
+      // Otherwise, filter on the array
+      promiseList.filter(function(item) {
+
+        var itemValues = item.values();
+
+        // Single selects, eg "Not started"
+        var single = _.filter(facets, { 'isSingle': true, 'facet': 'js-promise-status'});
+        var statusMatch = foundAny(single, itemValues);
+        // Single-selection items hide if false no matter what, so eject if not found here
+        // if (!statusMatch) {
+        //   return false;
+        // }
+
+        // Full categories can have multiples show, list out here
+        var multis = _.filter(facets, { 'isSingle': true, 'facet': 'js-promise-category'});
+        var categoryMatch=foundAny(multis,itemValues);
+
+        if(statusMatch && categoryMatch){
+          return true;
+        }
+        else return false;
+
+      }); // promiseList.filter()
+    }
+
     // Hard reset all the buttons
     $('.promises__category--reset').on('click', resetFilter);
+    $('.promises__category--removeCategory').on('click', removeCategory);
 
     // Any facet filter button
     $facets.on('click', function(e) {

@@ -182,7 +182,7 @@ only screen and (max-width: 760px),
 <!-- HEAD AND HEADER SECTION COMBINED COMPLETELY -->
 
 <script type="text/javascript">
-    var inaugration_date = "<?php echo get_post_meta(get_the_ID(), 'inaugration_date', true) ?>"
+    var inaugration_date = "<?php echo get_post_meta(get_the_ID(), 'inaugration_date', true) ?>";
 </script>
 
 <?php
@@ -271,6 +271,10 @@ if ($flag) {
 
 //$cats = explode(',', $categories);
 ?>
+
+<script type="text/javascript">
+    var totalPromises = <?php echo $globalIdx; ?>;
+</script>
 
 
 <?php
@@ -442,7 +446,7 @@ wp_reset_postdata();
 </div> <!-- .et_pb_text -->
 <div class="et_pb_module et_pb_tabs table-responsive et_pb_tabs_0">
                 <ul class="et_pb_tabs_controls clearfix" id="myTabs" role="tablist">
-                <li class="et_pb_tab_0 et_pb_tab_active promises__category--reset" onclick="makeActive(0, <?php echo $globalIdx; ?>);"><a href="#">All Categories</a></li>
+                <li class="et_pb_tab_0 et_pb_tab_active promises__category--removeCategory" onclick="makeActive(0, <?php echo $globalIdx; ?>);"><a href="#">All Categories</a></li>
                 <?php $index = 1; ?>
                     <?php foreach ($cats as $cat): ?>
                     <li id="mytab_<?php echo $index; ?>" role="presentation" data-list-facet="js-promise-category" data-facet-value="<?php echo $cat ?>" class="et_pb_tab_<?php echo $index; ?> <?php echo $cat; ?>"  data-select-single="true" onclick="makeActive(<?php echo $index; ?>, <?php echo $globalIdx; ?>);">
