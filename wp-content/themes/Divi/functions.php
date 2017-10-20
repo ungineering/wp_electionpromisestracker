@@ -8815,7 +8815,7 @@ add_action( 'after_switch_theme', 'my_flush_rewrite_rules' );
 
 
 function government_script_enqueue(){
-	
+
 	wp_enqueue_style('government', get_template_directory_uri() . '/css/government.css', array(), '1.0.0', 'all');
 	wp_enqueue_script('government', get_template_directory_uri() . '/js/government.js', array(), '1.0.0', true);
 
@@ -8827,7 +8827,7 @@ add_action( 'wp_enqueue_scripts', 'government_script_enqueue');
 // function government_script_enqueue() {
 
 // 		global $wp_scripts;
-	
+
 
 // }
 // add_action( 'wp_enqueue_scripts', 'government_script_enqueue');
@@ -8870,36 +8870,57 @@ function promise_wpseo_description( $desc ) {
 }
 
 
-function themes_taxonomy() {  
-    register_taxonomy(  
-        'promise_categories',  //The name of the taxonomy. Name should be in slug form (must not contain capital letters or spaces). 
+function themes_taxonomy() {
+    register_taxonomy(
+        'promise_categories',  //The name of the taxonomy. Name should be in slug form (must not contain capital letters or spaces).
         'promise',        //post type name
-        array(  
-            'hierarchical' => true,  
+        array(
+            'hierarchical' => true,
             'label' => 'promise catergory',  //Display name
             'query_var' => true,
             'rewrite' => array(
                 'slug' => 'promise-category', // This controls the base slug that will display before each term
-                'with_front' => false // Don't display the category base before 
+                'with_front' => false // Don't display the category base before
             )
-        )  
-    );  
-}  
+        )
+    );
+}
 add_action( 'init', 'themes_taxonomy');
 
-function promise_taxonomy() {  
-    register_taxonomy(  
-        'promise_status',  //The name of the taxonomy. Name should be in slug form (must not contain capital letters or spaces). 
+
+
+function promise_taxonomy_language() {
+    register_taxonomy(
+        'promise_language',  //The name of the taxonomy. Name should be in slug form (must not contain capital letters or spaces).
         'promise',        //post type name
-        array(  
-            'hierarchical' => true,  
+        array(
+            'hierarchical' => false,
+            'label' => 'promise language',  //Display name
+            'query_var' => true,
+            'show_ui' => true,
+    				'show_admin_column' => true,
+            'rewrite' => array(
+                'slug' => 'promise_language', // This controls the base slug that will display before each term
+                'with_front' => false // Don't display the category base before
+            )
+        )
+    );
+}
+add_action( 'init', 'promise_taxonomy_language');
+
+function promise_taxonomy() {
+    register_taxonomy(
+        'promise_status',  //The name of the taxonomy. Name should be in slug form (must not contain capital letters or spaces).
+        'promise',        //post type name
+        array(
+            'hierarchical' => true,
             'label' => 'promise status',  //Display name
             'query_var' => true,
             'rewrite' => array(
                 'slug' => 'promise-status', // This controls the base slug that will display before each term
-                'with_front' => false // Don't display the category base before 
+                'with_front' => false // Don't display the category base before
             )
-        )  
-    );  
-}  
+        )
+    );
+}
 add_action( 'init', 'promise_taxonomy');

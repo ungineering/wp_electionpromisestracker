@@ -1,4 +1,4 @@
-<?php
+s<?php
 /*
   Template Name: government_template
  */
@@ -16,6 +16,7 @@ $categories = get_post_meta(get_the_ID(), 'categories', true);
 $party_name = get_post_meta(get_the_ID(), 'party_name', true);
 $twitter_template = get_post_meta(get_the_ID(), 'twitter_template', true);
 $facebook_template = get_post_meta(get_the_ID(), 'facebook_template', true);
+$page_language;
 
 $icons = array("First 100 Days" => "clock-o",
     "Culture" => "music",
@@ -89,9 +90,23 @@ if ($flag) {
 ?>
 
 
+<?php parse_str($_SERVER['QUERY_STRING'], $params);
+	$language_key = 'lan';
+	$enabled_language = array("en","hi","gj");
+	$language_map = array('en' => 'english','hi'=>'hindi');
+	if($params[$language_key]){
+		if(in_array($params[$language_key], $enabled_language)){
+			$page_language = $language_map[$params[$language_key]];
+		}
+	}else{
+		$page_language = $language_map["en"];
+	}
+?>
+
+
 <?php
 $total_promises = 0;
-$loop = new WP_Query(array('post_type' => 'promise', 'category_name' => $page_title, 'ignore_sticky_posts' => 1, 'posts_per_page' => -1, 'paged' => $paged));
+ $loop = new WP_Query(array('post_type' => 'promise', 'category_name' => $page_title,'tax_query' => array(  array( 'taxonomy' => 'promise_language', 'field' => 'slug','terms' => $page_language,)), 'ignore_sticky_posts' => 1, 'posts_per_page' => -1, 'paged' => $paged));
 
 while ($loop->have_posts()) :
     $loop->the_post();
@@ -191,6 +206,7 @@ wp_reset_postdata();
         </div>
     </div>
 
+
     <div class="container-fluid">
         <div class="row">
             <ul class="nav nav-tabs" id="myTabs" role="tablist" >
@@ -223,7 +239,7 @@ wp_reset_postdata();
                     <!-- add color to each policy -->
                     <?php
                     $index = 0;
-                    $loop = new WP_Query(array('post_type' => 'promise', 'category_name' => $page_title, 'ignore_sticky_posts' => 1, 'posts_per_page' => -1, 'paged' => $paged));
+                    $loop = new WP_Query(array('post_type' => 'promise', 'category_name' => $page_title,'tax_query' => array(  array( 'taxonomy' => 'promise_language', 'field' => 'slug','terms' => $page_language,)), 'ignore_sticky_posts' => 1, 'posts_per_page' => -1, 'paged' => $paged));
 
                     while ($loop->have_posts()) :
                         $loop->the_post();
