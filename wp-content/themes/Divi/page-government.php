@@ -603,7 +603,7 @@ ul.et_pb_social_media_follow_0 { align: right; }
 .et_pb_tabs .et_pb_all_tabs .et_pb_tab_4.et_pb_tab { line-height: 2em; }
 .et_pb_tabs .et_pb_tab_4.et_pb_tab p { line-height: 2em; }
 .et_pb_tabs .et_pb_tabs_controls li.et_pb_tab_4, .et_pb_tabs .et_pb_tabs_controls li.et_pb_tab_4 a { line-height: 2em !important; }
-.et_pb_tabs .et_pb_tabs_controls li.et_pb_tab_5 a { color: #ffffff !important; }
+/*.et_pb_tabs .et_pb_tabs_controls li.et_pb_tab_5 a { color: #ffffff !important; }*/
 .et_pb_tabs .et_pb_all_tabs .et_pb_tab_5.et_pb_tab { color: #ffffff !important; line-height: 2em; }
 .et_pb_tabs .et_pb_all_tabs .et_pb_tab_3.et_pb_tab { line-height: 2em; }
 .et_pb_tabs .et_pb_tab_5.et_pb_tab { background-color: #ffffff; }

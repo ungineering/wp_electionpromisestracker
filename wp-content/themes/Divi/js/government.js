@@ -142,6 +142,18 @@
       // }
       // Flag as active
       $(this).toggleClass('active');
+      if(facet ==  'js-promise-status') {
+      var tabNumber = 0;
+      var totalTabs = totalPromises;
+      removeCategory();
+              var i;
+      for(i = 0; i <= totalTabs; i++) {
+          $('.et_pb_tabs_controls li.et_pb_tab_'+ i).removeClass('et_pb_tab_active');
+      }
+      $('.et_pb_tabs_controls li.et_pb_tab_'+ tabNumber).addClass('et_pb_tab_active');
+      return;
+    }
+      // removeCategory();
 
       // Array of active
       var facets = $facets.filter('.active').map(function() {
