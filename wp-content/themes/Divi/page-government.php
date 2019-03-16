@@ -13,6 +13,8 @@ get_header();
 $page_title = $wp_query->post->post_title;
 $flag = get_post_meta(get_the_ID(), 'flag', true);
 $categories = get_post_meta(get_the_ID(), 'categories', true);
+//flag to disable/enable untested code changes; plz forgive me for this code
+$activate_code = get_post_meta(get_the_ID(), 'activate_code', true);
 $party_name = get_post_meta(get_the_ID(), 'party_name', true);
 $twitter_template = get_post_meta(get_the_ID(), 'twitter_template', true);
 $facebook_template = get_post_meta(get_the_ID(), 'facebook_template', true);
@@ -57,6 +59,20 @@ $statuses = array(
         "id" => "iprogress",
         "old" => "info"
     ),
+    "Partially Broken" => array(
+    "color" => "rgba(141, 153, 161, 0.56)",
+    "color_bright" => "rgba(141, 153, 161, 0.63)",
+    "icon" => "cog",
+    "id" => "iprogress",
+    "old" => "info"
+    ),
+    "Partially Fulfilled" => array(
+    "color" => "rgb(204, 221, 232)",
+    "color_bright" => "rgb(153, 204, 237)",
+    "icon" => "cogs",
+    "id" => "aprogress",
+    "old" => "warning"
+    ),
     "Yet to Start" => array(
         "color" => "rgba(182, 46, 194, 0.17)",
         "color_bright" => "rgba(182, 46, 194, 0.45)",
@@ -79,13 +95,16 @@ $statuses = array(
         "old" => "danger"
     )
 );
+
+//$cats = explode(',', $categories);
+//this explode function didnt work right, so hardcoding categories basis flag value
 if ($flag) {
     $cats = array("Education", "Health", "Economy", "Business and Industries", "Governance", "Agriculture");
 } else {
     $cats = array("Flagship Promises", "Education", "Health", "Water");
 }
 
-//$cats = explode(',', $categories);
+
 ?>
 
 
@@ -100,6 +119,14 @@ while ($loop->have_posts()) :
 endwhile;
 wp_reset_postdata();
 ?>
+
+<?php
+if($activate_code){
+foreach (array_keys($status_promises_count) as $key)
+	if ($status_promises_count[$key] == 0) { unset($statuses[$key]); }
+}
+?>
+
 
 <div class="container promises-header page-header" id="promises-header">
     <div class="row">
